@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTrack | Learning Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
+        <a href="{{ url_for('home') }}">Home</a>
+    </header>
+
+    <main class="container">
+        <p class="eyebrow">YOUR LEARNING PATH</p>
+        <h1>DevOps Learning Modules</h1>
+        <p>Build your understanding one topic at a time.</p>
+
+        <section class="modules">
+            <article class="card">
+                <span>01</span>
+                <h2>DevOps Fundamentals</h2>
+                <p>Understand DevOps, its principles, benefits and lifecycle.</p>
+                <p class="status">Beginner level</p>
+            </article>
+
+            <article class="card">
+                <span>02</span>
+                <h2>SCM and Version Control</h2>
+                <p>Learn repositories, commits, version control and collaboration.</p>
+                <p class="status">Beginner level</p>
+            </article>
+
+            <article class="card">
+                <span>03</span>
+                <h2>Git and GitHub</h2>
+                <p>Explore branches, push, pull, merging and pull requests.</p>
+                <p class="status">Beginner level</p>
+            </article>
+
+            <article class="card">
+                <span>04</span>
+                <h2>CI/CD Fundamentals</h2>
+                <p>Discover automated building, testing and deployment.</p>
+                <p class="status">Beginner level</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
