@@ -1,0 +1,92 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1c2940;
+    line-height: 1.7;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: #ffffff;
+    border-bottom: 1px solid #e0e6ef;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2859c5;
+    text-decoration: none;
+}
+
+.header span {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 22px;
+}
+
+.label {
+    color: #2859c5;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 42px);
+    line-height: 1.2;
+}
+
+.intro {
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.lesson-card {
+    background: #ffffff;
+    border: 1px solid #e0e6ef;
+    border-radius: 12px;
+    padding: 22px;
+    margin: 18px 0;
+}
+
+.lesson-card h2 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.lifecycle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0;
+}
+
+.lifecycle span {
+    padding: 8px 14px;
+    border-radius: 7px;
+    background: #e7efff;
+    color: #234da6;
+    font-weight: bold;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 20px 0 40px;
+    color: #2859c5;
+    font-weight: bold;
+}
