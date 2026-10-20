@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevTrack | Learn DevOps</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
 </head>
 <body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('lessons') }}">Learning modules</a>
+        </nav>
+    </header>
+
     <main class="hero">
-        <p class="eyebrow">LEARN • PRACTICE • GROW</p>
-        <h1>Welcome to DevTrack!</h1>
-        <p>Your journey to learning DevOps starts here.</p>
-        <a class="button" href="{{ url_for('lessons') }}">Explore Learning Modules</a>
+        <section class="hero-content" aria-labelledby="welcome-heading">
+            <p class="eyebrow">LEARN • PRACTICE • GROW</p>
+            <h1 id="welcome-heading">Build your DevOps skills, one step at a time.</h1>
+            <p class="hero-copy">DevTrack turns key concepts into a clear learning path—from DevOps basics to Git, GitHub and CI/CD.</p>
+            <div class="hero-actions">
+                <a class="button" href="{{ url_for('lessons') }}">Explore learning modules</a>
+                <a class="text-link" href="{{ url_for('lessons') }}">See what you will learn <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <aside class="learning-card" aria-label="Learning path summary">
+            <p class="card-label">YOUR FIRST PATH</p>
+            <h2>Start with the essentials</h2>
+            <ol class="path-list">
+                <li><span>01</span> DevOps fundamentals</li>
+                <li><span>02</span> Version control</li>
+                <li><span>03</span> Git and GitHub</li>
+                <li><span>04</span> CI/CD fundamentals</li>
+            </ol>
+        </aside>
     </main>
 </body>
 </html>
