@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTrack | Introduction to DevOps</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='lessons.css') }}">
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="brand">DevTrack</a>
+        <span>Learning Module 01</span>
+    </header>
+
+    <main class="content">
+        <p class="label">MODULE 01 · BEGINNER</p>
+        <h1>Introduction to DevOps</h1>
+        <p class="intro">
+            Understand how development and operations teams work together
+            to deliver software faster and more reliably.
+        </p>
+
+        <section class="lesson-card">
+            <h2>1. What is DevOps?</h2>
+            <p>
+                DevOps is a combination of Development and Operations.
+                It encourages teams to collaborate, automate repetitive
+                tasks, test software continuously and deliver updates
+                more reliably.
+            </p>
+        </section>
+
+        <section class="lesson-card">
+            <h2>2. Why do we need DevOps?</h2>
+            <ul>
+                <li>Improves collaboration between teams.</li>
+                <li>Reduces repetitive manual work through automation.</li>
+                <li>Helps detect errors earlier through testing.</li>
+                <li>Supports faster and more reliable software releases.</li>
+            </ul>
+        </section>
+
+        <section class="lesson-card">
+            <h2>3. DevOps lifecycle</h2>
+            <div class="lifecycle">
+                <span>Plan</span>
+                <span>Code</span>
+                <span>Build</span>
+                <span>Test</span>
+                <span>Deploy</span>
+                <span>Monitor</span>
+            </div>
+            <p>
+                These activities form a continuous cycle. Feedback from
+                monitoring helps teams plan further improvements.
+            </p>
+        </section>
+
+        <section class="lesson-card">
+            <h2>4. What is CI/CD?</h2>
+            <p>
+                Continuous Integration (CI) helps developers integrate
+                code changes frequently and test them automatically.
+                Continuous Delivery or Deployment (CD) helps prepare or
+                release tested changes through an automated pipeline.
+            </p>
+        </section>
+
+        <a class="back-link" href="/">Back to Home</a>
+    </main>
+</body>
+</html>
