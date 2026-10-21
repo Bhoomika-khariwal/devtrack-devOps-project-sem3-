@@ -17,6 +17,10 @@ def lessons():
 def devops_basics():
     return render_template("devops_basics.html")
 
+@app.route("/lessons/scm-basics")
+def scm_basics():
+    return render_template("scm_basics.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
