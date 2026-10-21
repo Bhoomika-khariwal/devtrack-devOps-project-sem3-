@@ -21,6 +21,10 @@ def devops_basics():
 def scm_basics():
     return render_template("scm_basics.html")
 
+@app.route("/quiz")
+def quiz():
+    return render_template("quiz.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
