@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCM and Version Control | DevTrack</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='lessons.css') }}">
+</head>
+<body>
+    <main class="lesson-container">
+        <p>DEVTRACK LEARNING MODULE 02</p>
+        <h1>SCM and Version Control</h1>
+        <p>
+            Learn how developers manage code changes and
+            collaborate safely on software projects.
+        </p>
+
+        <section>
+            <h2>1. What is SCM?</h2>
+            <p>
+                Source Code Management (SCM) is the process of
+                tracking, organising and managing changes made
+                to source code. It helps developers work together
+                and maintain a history of their changes.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. What is Version Control?</h2>
+            <p>
+                Version control records different versions of files.
+                It allows developers to see previous changes,
+                compare versions and recover earlier work when needed.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. What is Git?</h2>
+            <p>
+                Git is a distributed version control system.
+                Each developer can keep a local repository and
+                work on changes independently.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Important Git Concepts</h2>
+            <ul>
+                <li><strong>Repository:</strong> Stores project files and history.</li>
+                <li><strong>Working directory:</strong> Where you edit files.</li>
+                <li><strong>Staging area:</strong> Holds changes selected for the next commit.</li>
+                <li><strong>Commit:</strong> A recorded snapshot of changes.</li>
+                <li><strong>Branch:</strong> An independent line of development.</li>
+                <li><strong>Remote:</strong> A repository hosted elsewhere, such as GitHub.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. Basic Git Workflow</h2>
+            <pre><code>git status
+git add .
+git commit -m "Add lesson content"
+git push</code></pre>
+            <p>
+                Check the status, stage your intended changes,
+                commit them and push your commits to a remote branch.
+                For a new branch, configure its upstream when pushing.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Clone, Push and Pull</h2>
+            <ul>
+                <li><code>git clone</code> copies a remote repository locally.</li>
+                <li><code>git push</code> uploads local commits to a remote.</li>
+                <li><code>git pull</code> fetches and integrates remote changes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>7. Why SCM Matters in DevTrack</h2>
+            <p>
+                Bhoomika and Ayush use Git branches and GitHub
+                pull requests to develop different features,
+                review changes and integrate the project safely.
+            </p>
+        </section>
+
+        <a href="/lessons">← Back to Learning Modules</a>
+    </main>
+</body>
+</html>
