@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}DevTrack{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="{{ url_for('intro') }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5ef0e0" stroke-width="2" stroke-linecap="round">
+        <path d="M12 12c2-3 4-4 6-4s4 2 4 4-2 4-4 4-4-1-6-4c-2-3-4-4-6-4s-4 2-4 4 2 4 4 4 4-1 6-4z"/>
+      </svg>
+      DevTrack
+    </a>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' }}">Home</a></li>
+      <li><a href="{{ url_for('lessons') }}" class="{{ 'active' if request.endpoint == 'lessons' }}">Learning modules</a></li>
+    </ul>
+  </header>
+
+  <main>{% block content %}{% endblock %}</main>
+
+  <footer class="wrap foot">DevTrack: a DevOps learning project.</footer>
+</body>
+</html>

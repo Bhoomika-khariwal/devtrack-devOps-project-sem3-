@@ -1,52 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevTrack | Learning Modules</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header class="topbar">
-        <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
-        <a href="{{ url_for('home') }}">Home</a>
-    </header>
+{% extends "base.html" %}
+{% block title %}DevTrack | Learning Modules{% endblock %}
 
-    <main class="container">
-        <p class="eyebrow">YOUR LEARNING PATH</p>
-        <h1>DevOps Learning Modules</h1>
-        <p>Build your understanding one topic at a time.</p>
+{% block content %}
+{% set modules = [
+  {"n": "01", "title": "DevOps Fundamentals", "text": "Understand DevOps, its principles, benefits and lifecycle.", "stage": "Plan", "c": "var(--dev)", "link": url_for('devops_basics')},
+  {"n": "02", "title": "SCM and Version Control", "text": "Learn repositories, commits, version control and collaboration.", "stage": "Code", "c": "var(--dev)"},
+  {"n": "03", "title": "Git and GitHub", "text": "Explore branches, push, pull, merging and pull requests.", "stage": "Code", "c": "#9fb6ff"},
+  {"n": "04", "title": "CI/CD Fundamentals", "text": "Discover automated building, testing and deployment.", "stage": "Build to deploy", "c": "var(--ops)"}
+] %}
 
-        <section class="modules">
-            <article class="card">
-                <span>01</span>
-                <h2>DevOps Fundamentals</h2>
-                <p>Understand DevOps, its principles, benefits and lifecycle.</p>
-                <p class="status">Beginner level</p>
-            </article>
+<div class="wrap">
+  <header class="page-head">
+    <h1>DevOps Learning Modules</h1>
+    <p>Build your understanding one topic at a time.</p>
+  </header>
 
-            <article class="card">
-                <span>02</span>
-                <h2>SCM and Version Control</h2>
-                <p>Learn repositories, commits, version control and collaboration.</p>
-                <p class="status">Beginner level</p>
-            </article>
-
-            <article class="card">
-                <span>03</span>
-                <h2>Git and GitHub</h2>
-                <p>Explore branches, push, pull, merging and pull requests.</p>
-                <p class="status">Beginner level</p>
-            </article>
-
-            <article class="card">
-                <span>04</span>
-                <h2>CI/CD Fundamentals</h2>
-                <p>Discover automated building, testing and deployment.</p>
-                <p class="status">Beginner level</p>
-            </article>
-        </section>
-    </main>
-    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
-</body>
-</html>
+  <section class="timeline">
+    {% for m in modules %}
+    <article class="module" style="--c: {{ m.c }}">
+      <div>
+        <span class="num">Module {{ m.n }}</span>
+        <h2>{{ m.title }}</h2>
+        <p>{{ m.text }}</p>
+        <div class="chips">
+          <span class="chip">Beginner level</span>
+          <span class="chip stage">{{ m.stage }}</span>
+        </div>
+      </div>
+      {% if m.link %}
+        <a class="go" href="{{ m.link }}">Start module</a>
+      {% else %}
+        <span class="go off">Coming soon</span>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

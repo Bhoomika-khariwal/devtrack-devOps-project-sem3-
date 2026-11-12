@@ -13,7 +13,56 @@
         <a href="/" class="brand">DevTrack</a>
         <span>Learning Module 01</span>
     </header>
+{% extends "base.html" %}
+{% block title %}DevTrack | DevOps Fundamentals{% endblock %}
 
+{% block content %}
+<div class="wrap">
+  <header class="page-head">
+    <a class="back" href="{{ url_for('lessons') }}">Back to modules</a>
+    <h1>DevOps Fundamentals</h1>
+    <p>Module 01 · Beginner level · about 10 minutes</p>
+  </header>
+
+  <div class="lesson">
+    <section class="block">
+      <h2>What is DevOps?</h2>
+      <p>DevOps is a way of working where development and operations teams share responsibility for building, releasing and running software. Instead of handing code over a wall, one team owns it from idea to production.</p>
+    </section>
+
+    <section class="block">
+      <h2>Core principles</h2>
+      <div class="grid3">
+        <div class="mini"><b>Collaboration</b><p>Developers and operations work as one team.</p></div>
+        <div class="mini"><b>Automation</b><p>Build, test and deploy without manual steps.</p></div>
+        <div class="mini"><b>Continuous feedback</b><p>Monitoring in production feeds the next plan.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>The DevOps lifecycle</h2>
+      <div class="cycle">
+        <span class="dev">Plan</span><span class="dev">Code</span><span class="dev">Build</span><span class="dev">Test</span>
+        <span class="ops">Release</span><span class="ops">Deploy</span><span class="ops">Operate</span><span class="ops">Monitor</span>
+      </div>
+      <p>The lifecycle is a loop, not a line. What you learn while monitoring goes straight back into planning.</p>
+    </section>
+
+    <section class="block">
+      <h2>Why it matters</h2>
+      <ul class="ticks">
+        <li>Faster releases with fewer manual errors</li>
+        <li>Problems found early, when they are cheap to fix</li>
+        <li>Teams that share goals instead of blaming each other</li>
+      </ul>
+    </section>
+
+    <div class="actions">
+      <a class="btn ghost" href="{{ url_for('lessons') }}">All modules</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
     <main class="content">
         <p class="label">MODULE 01 · BEGINNER</p>
         <h1>Introduction to DevOps</h1>
