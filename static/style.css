@@ -113,6 +113,7 @@ a.go:hover { transform: translateY(-2px); }
 }
 @media (max-width: 520px) { .path-row { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {
+<<<<<<< HEAD
   * { animation: none !important; transition: none !important; }
   .dot { background: var(--c, var(--dev)); border-color: var(--c, var(--dev)); }
 }
@@ -134,3 +135,31 @@ a.go:hover { transform: translateY(-2px); }
 .ticks { list-style: none; padding: 0; display: grid; gap: 12px; color: var(--muted); }
 .ticks li::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--dev); box-shadow: 0 0 10px var(--dev); margin-right: 12px; }
 @media (max-width: 700px) { .grid3 { grid-template-columns: 1fr; } }
+=======
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        
+     .lesson-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #2859c5;
+    color: white;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+    .lesson-link:hover {
+    background: #1d4296;
+   }
+
+    }
+}
+>>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045

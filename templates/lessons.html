@@ -1,5 +1,22 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 {% block title %}DevTrack | Learning Modules{% endblock %}
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTrack | Learning Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
+        <a href="{{ url_for('home') }}">Home</a>
+    </header>
+>>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045
 
 {% block content %}
 {% set modules = [
@@ -9,6 +26,7 @@
   {"n": "04", "title": "CI/CD Fundamentals", "text": "Discover automated building, testing and deployment.", "stage": "Build to deploy", "c": "var(--ops)"}
 ] %}
 
+<<<<<<< HEAD
 <div class="wrap">
   <header class="page-head">
     <h1>DevOps Learning Modules</h1>
@@ -37,3 +55,59 @@
   </section>
 </div>
 {% endblock %}
+=======
+        <section class="modules">
+
+            <!-- Module 01: DevOps Fundamentals -->
+            <article class="card">
+                <span>01</span>
+                <h2>DevOps Fundamentals</h2>
+                <p>Understand DevOps, its principles, benefits and lifecycle.</p>
+                <p class="status">Beginner level</p>
+                <a class="lesson-link" href="/lessons/devops-basics">
+                    Start Learning →
+                </a>
+            </article>
+
+            <!-- Module 02: SCM and Version Control -->
+            <article class="card">
+                <span>02</span>
+                <h2>SCM and Version Control</h2>
+                <p>Learn repositories, commits, version control and collaboration.</p>
+                <p class="status">Beginner level</p>
+                <a class="lesson-link" href="/lessons/scm-basics">
+                    Start Learning →
+                </a>
+            </article>
+
+            <!-- Module 03: Git and GitHub -->
+            <article class="card">
+                <span>03</span>
+                <h2>Git and GitHub</h2>
+                <p>Explore branches, push, pull, merging and pull requests.</p>
+                <p class="status">Beginner level</p>
+            </article>
+
+            <!-- Module 04: CI/CD Fundamentals -->
+            <article class="card">
+                <span>04</span>
+                <h2>CI/CD Fundamentals</h2>
+                <p>Discover automated building, testing and deployment.</p>
+                <p class="status">Beginner level</p>
+            </article>
+
+        </section>
+
+        <!-- Interactive DevOps Quiz -->
+        <div style="text-align: center; margin-top: 30px;">
+            <a class="lesson-link" href="/quiz">
+                Take the DevOps Quiz →
+            </a>
+        </div>
+
+    </main>
+
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
+>>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045

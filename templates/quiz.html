@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTrack | DevOps Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <script src="{{ url_for('static', filename='quiz.js') }}" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a href="/lessons" class="brand">DevTrack</a>
+        <a href="/lessons" class="back-link">← Back to Modules</a>
+    </header>
+
+    <main class="quiz-container">
+        <section class="intro">
+            <p class="eyebrow">LEARN • PRACTICE • TEST</p>
+            <h1>DevOps Knowledge Check</h1>
+            <p>Test your understanding of DevOps fundamentals and source code management.</p>
+        </section>
+
+        <section class="quiz-card">
+            <div class="quiz-meta">
+                <span id="question-counter">Question 1 of 5</span>
+                <span id="score-preview">Score: 0</span>
+            </div>
+
+            <div class="progress-track">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <h2 id="question-text">Loading question...</h2>
+            <div id="options-container" class="options-container"></div>
+
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+
+            <div class="quiz-actions">
+                <button id="submit-btn" class="primary-btn">Check Answer</button>
+                <button id="next-btn" class="primary-btn" hidden>Next Question →</button>
+            </div>
+
+            <section id="result-panel" class="result-panel" hidden>
+                <div class="result-icon">✓</div>
+                <h2>Quiz Completed!</h2>
+                <p id="final-score"></p>
+                <p id="result-message"></p>
+                <button id="retry-btn" class="primary-btn">Try Again</button>
+                <a href="/lessons" class="secondary-link">Explore Lessons</a>
+            </section>
+        </section>
+
+        <p class="footer-note">DevTrack — Learn DevOps by doing.</p>
+    </main>
+</body>
+</html>
