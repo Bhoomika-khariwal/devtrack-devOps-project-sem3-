@@ -23,7 +23,7 @@ def devops_basics():
 def scm_basics():
     return render_template("scm_basics.html")
 
-@app.route("/quiz")
+@app.route("/lessons/devops-basics/quiz")
 def quiz():
     return render_template("quiz.html")
 

@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 {% extends "base.html" %}
 {% block title %}DevTrack | Learning Modules{% endblock %}
-=======
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +14,7 @@
         <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
         <a href="{{ url_for('home') }}">Home</a>
     </header>
->>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045
+
 
 {% block content %}
 {% set modules = [
@@ -25,8 +23,6 @@
   {"n": "03", "title": "Git and GitHub", "text": "Explore branches, push, pull, merging and pull requests.", "stage": "Code", "c": "#9fb6ff"},
   {"n": "04", "title": "CI/CD Fundamentals", "text": "Discover automated building, testing and deployment.", "stage": "Build to deploy", "c": "var(--ops)"}
 ] %}
-
-<<<<<<< HEAD
 <div class="wrap">
   <header class="page-head">
     <h1>DevOps Learning Modules</h1>
@@ -55,7 +51,6 @@
   </section>
 </div>
 {% endblock %}
-=======
         <section class="modules">
 
             <!-- Module 01: DevOps Fundamentals -->
@@ -110,4 +105,3 @@
     <script defer src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
->>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045
