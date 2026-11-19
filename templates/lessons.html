@@ -1,113 +1,99 @@
-<<<<<<< HEAD
-{% extends "base.html" %}
-{% block title %}DevTrack | Learning Modules{% endblock %}
-=======
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevTrack | Learning Modules</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header class="topbar">
-        <a class="brand" href="{{ url_for('home') }}">DevTrack</a>
-        <a href="{{ url_for('home') }}">Home</a>
-    </header>
->>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045
+{% extends "base.html" %}
+
+{% block title %}DevTrack | Learning Modules{% endblock %}
 
 {% block content %}
+
 {% set modules = [
-  {"n": "01", "title": "DevOps Fundamentals", "text": "Understand DevOps, its principles, benefits and lifecycle.", "stage": "Plan", "c": "var(--dev)", "link": url_for('devops_basics')},
-  {"n": "02", "title": "SCM and Version Control", "text": "Learn repositories, commits, version control and collaboration.", "stage": "Code", "c": "var(--dev)"},
-  {"n": "03", "title": "Git and GitHub", "text": "Explore branches, push, pull, merging and pull requests.", "stage": "Code", "c": "#9fb6ff"},
-  {"n": "04", "title": "CI/CD Fundamentals", "text": "Discover automated building, testing and deployment.", "stage": "Build to deploy", "c": "var(--ops)"}
+    {
+        "n": "01",
+        "title": "DevOps Fundamentals",
+        "text": "Understand DevOps, its principles, benefits and lifecycle.",
+        "stage": "Plan",
+        "link": "/lessons/devops-basics",
+        "c": "#36d6c5"
+    },
+    {
+        "n": "02",
+        "title": "SCM and Version Control",
+        "text": "Learn repositories, commits, version control and collaboration.",
+        "stage": "Code",
+        "link": "/lessons/scm-basics",
+        "c": "#36d6c5"
+    },
+    {
+        "n": "03",
+        "title": "Git and GitHub",
+        "text": "Explore branches, push, pull, merging and pull requests.",
+        "stage": "Build",
+        "link": None,
+        "c": "#36d6c5"
+    },
+    {
+        "n": "04",
+        "title": "CI/CD Fundamentals",
+        "text": "Discover automated building, testing and deployment.",
+        "stage": "Deploy",
+        "link": None,
+        "c": "#36d6c5"
+    }
 ] %}
 
-<<<<<<< HEAD
 <div class="wrap">
-  <header class="page-head">
-    <h1>DevOps Learning Modules</h1>
-    <p>Build your understanding one topic at a time.</p>
-  </header>
 
-  <section class="timeline">
-    {% for m in modules %}
-    <article class="module" style="--c: {{ m.c }}">
-      <div>
-        <span class="num">Module {{ m.n }}</span>
-        <h2>{{ m.title }}</h2>
-        <p>{{ m.text }}</p>
-        <div class="chips">
-          <span class="chip">Beginner level</span>
-          <span class="chip stage">{{ m.stage }}</span>
-        </div>
-      </div>
-      {% if m.link %}
-        <a class="go" href="{{ m.link }}">Start module</a>
-      {% else %}
-        <span class="go off">Coming soon</span>
-      {% endif %}
-    </article>
-    {% endfor %}
-  </section>
+    <header class="page-head">
+        <h1>DevOps Learning Modules</h1>
+        <p>Build your understanding one topic at a time.</p>
+    </header>
+
+    <section class="timeline">
+
+        {% for m in modules %}
+
+        <article class="module" style="--c: {{ m.c }}">
+
+            <div>
+                <span class="num">Module {{ m.n }}</span>
+
+                <h2>{{ m.title }}</h2>
+
+                <p>{{ m.text }}</p>
+
+                <div class="chips">
+                    <span class="chip">Beginner level</span>
+                    <span class="chip stage">{{ m.stage }}</span>
+                </div>
+            </div>
+
+            {% if m.link %}
+                <a class="go" href="{{ m.link }}">
+                    Start module →
+                </a>
+            {% else %}
+                <span class="go off">Coming soon</span>
+            {% endif %}
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+    <div style="text-align: center; margin-top: 35px; padding-bottom: 40px;">
+    <a href="/quiz"
+       style="display: inline-block;
+              background: #36d6c5;
+              color: #07111f;
+              padding: 15px 30px;
+              border-radius: 30px;
+              text-decoration: none;
+              font-weight: bold;
+              font-size: 16px;">
+        Take the DevOps Quiz →
+    </a>
 </div>
+
+</div>
+
 {% endblock %}
-=======
-        <section class="modules">
-
-            <!-- Module 01: DevOps Fundamentals -->
-            <article class="card">
-                <span>01</span>
-                <h2>DevOps Fundamentals</h2>
-                <p>Understand DevOps, its principles, benefits and lifecycle.</p>
-                <p class="status">Beginner level</p>
-                <a class="lesson-link" href="/lessons/devops-basics">
-                    Start Learning →
-                </a>
-            </article>
-
-            <!-- Module 02: SCM and Version Control -->
-            <article class="card">
-                <span>02</span>
-                <h2>SCM and Version Control</h2>
-                <p>Learn repositories, commits, version control and collaboration.</p>
-                <p class="status">Beginner level</p>
-                <a class="lesson-link" href="/lessons/scm-basics">
-                    Start Learning →
-                </a>
-            </article>
-
-            <!-- Module 03: Git and GitHub -->
-            <article class="card">
-                <span>03</span>
-                <h2>Git and GitHub</h2>
-                <p>Explore branches, push, pull, merging and pull requests.</p>
-                <p class="status">Beginner level</p>
-            </article>
-
-            <!-- Module 04: CI/CD Fundamentals -->
-            <article class="card">
-                <span>04</span>
-                <h2>CI/CD Fundamentals</h2>
-                <p>Discover automated building, testing and deployment.</p>
-                <p class="status">Beginner level</p>
-            </article>
-
-        </section>
-
-        <!-- Interactive DevOps Quiz -->
-        <div style="text-align: center; margin-top: 30px;">
-            <a class="lesson-link" href="/quiz">
-                Take the DevOps Quiz →
-            </a>
-        </div>
-
-    </main>
-
-    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
-</body>
-</html>
->>>>>>> 0deb767b0d3ddc1aaf722d6f3704c51f4d4b7045

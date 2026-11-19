@@ -1,0 +1,290 @@
+
+/* =====================================
+   DEVTRACK - GLOBAL DARK THEME
+   Applies across the entire application
+===================================== */
+
+:root {
+    --bg: #070b19;
+    --surface: #0d142b;
+    --surface-light: #121c36;
+    --border: #263451;
+    --text: #e7ecfa;
+    --muted: #929fbe;
+    --accent: #35e6d0;
+    --accent-hover: #20cdbb;
+    --orange: #ffad42;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+    background-image:
+        linear-gradient(rgba(92, 119, 165, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(92, 119, 165, 0.15) 1px, transparent 1px);
+    background-size: 70px 70px;
+    line-height: 1.7;
+}
+
+/* Main layout */
+
+main,
+.container,
+.wrap,
+.lesson-container,
+.quiz-container,
+.content {
+    width: min(1120px, 92%);
+    margin: 40px auto;
+}
+
+/* Headings */
+
+h1, h2, h3, h4, h5 {
+    color: var(--text);
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 58px);
+    margin: 15px 0;
+}
+
+h2 {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+p, li {
+    color: var(--muted);
+}
+
+/* Header and navigation */
+
+header,
+.topbar,
+.header {
+    color: var(--text);
+}
+
+.topbar,
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px 6%;
+    background: rgba(10, 16, 34, 0.95);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--accent);
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Links */
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: white;
+}
+
+.back,
+.back-link,
+.secondary-link {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Cards and learning sections */
+
+.card,
+.block,
+.lesson,
+.lesson-card,
+.quiz-card,
+section,
+.mini,
+.module,
+article {
+    color: var(--text);
+}
+
+.block,
+.lesson-card,
+.quiz-card,
+.card,
+.mini,
+.module,
+article.card {
+    background: rgba(13, 20, 43, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+.block p,
+.lesson-card p,
+.card p,
+.mini p {
+    color: var(--muted);
+}
+
+/* Lists */
+
+ul, ol {
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Code blocks */
+
+code, pre {
+    color: var(--accent);
+    background: #111a30;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+code {
+    padding: 3px 7px;
+}
+
+pre {
+    padding: 18px;
+    overflow-x: auto;
+}
+
+/* Buttons */
+
+button,
+.btn,
+.primary-btn,
+.lesson-link,
+.go {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--accent);
+    color: #07121b;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover,
+.primary-btn:hover,
+.lesson-link:hover,
+.go:hover {
+    background: var(--accent-hover);
+    color: #07121b;
+}
+
+/* Form elements */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    color: var(--text);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    color: var(--accent);
+}
+
+/* Progress bars */
+
+.progress-track {
+    background: var(--surface-light);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: var(--accent);
+}
+
+/* Small labels */
+
+.eyebrow,
+.label,
+.status {
+    color: var(--accent);
+}
+
+/* Responsive design */
+
+@media (max-width: 650px) {
+    main,
+    .container,
+    .wrap,
+    .lesson-container,
+    .quiz-container,
+    .content {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .block,
+    .lesson-card,
+    .quiz-card,
+    .card {
+        padding: 19px;
+    }
+
+    .topbar,
+    .header {
+        padding: 15px 5%;
+    }
+}

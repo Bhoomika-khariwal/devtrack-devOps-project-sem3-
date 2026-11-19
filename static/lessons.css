@@ -90,3 +90,4 @@ h1 {
     color: #2859c5;
     font-weight: bold;
 }
+@import url("/static/theme.css");
