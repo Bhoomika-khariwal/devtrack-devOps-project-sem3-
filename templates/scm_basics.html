@@ -1,169 +1,82 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <title>DevTrack | SCM and Version Control</title>
+{% block title %}DevTrack | SCM and Version Control{% endblock %}
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='lessons.css') }}">
-</head>
+{% block content %}
+<div class="wrap">
 
-<body>
-
-    <header class="header">
-        <a href="/" class="brand">DevTrack</a>
-        <span>Learning Module 02</span>
+    <header class="page-head">
+        <a class="back" href="{{ url_for('lessons') }}">← Back to modules</a>
+        <h1>SCM and Version Control</h1>
+        <p>Module 02 · Beginner level · About 15 minutes</p>
     </header>
 
-    <main class="wrap">
+    <div class="lesson">
 
-        <header class="page-head">
-            <a class="back" href="{{ url_for('lessons') }}">
-                ← Back to modules
-            </a>
+        <section class="block">
+            <h2>1. What is Source Code Management (SCM)?</h2>
+            <p>Source Code Management is the process of tracking, organising and managing changes made to source code. It helps developers work together and maintain a history of their changes.</p>
+        </section>
 
-            <h1>SCM and Version Control</h1>
+        <section class="block">
+            <h2>2. What is Version Control?</h2>
+            <p>Version control records changes made to files over time. Developers can compare different versions, view previous changes and recover earlier work when needed.</p>
+        </section>
 
-            <p>Module 02 · Beginner level · About 15 minutes</p>
-        </header>
-
-        <div class="lesson">
-
-            <section class="block">
-                <h2>1. What is Source Code Management (SCM)?</h2>
-
-                <p>
-                    Source Code Management is the process of tracking,
-                    organising and managing changes made to source code.
-                    It helps developers work together and maintain a
-                    history of their project changes.
-                </p>
-            </section>
-
-            <section class="block">
-                <h2>2. What is Version Control?</h2>
-
-                <p>
-                    Version control is a system that records changes
-                    made to files over time. Developers can compare
-                    different versions, view previous changes and
-                    restore earlier work when needed.
-                </p>
-            </section>
-
-            <section class="block">
-                <h2>3. Types of Version Control Systems</h2>
-
-                <div class="grid3">
-                    <div class="mini">
-                        <b>Local VCS</b>
-                        <p>Stores file versions on one local computer.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>Centralized VCS</b>
-                        <p>Uses a central server to store project history.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>Distributed VCS</b>
-                        <p>Each developer can have a complete local repository.</p>
-                    </div>
+        <section class="block">
+            <h2>3. Types of Version Control Systems</h2>
+            <div class="grid3">
+                <div class="mini">
+                    <b>Local VCS</b>
+                    <p>Stores file versions on one local computer.</p>
                 </div>
-            </section>
-
-            <section class="block">
-                <h2>4. What is Git?</h2>
-
-                <p>
-                    Git is a distributed version control system.
-                    It allows developers to track changes, create
-                    branches and collaborate on projects.
-                </p>
-            </section>
-
-            <section class="block">
-                <h2>5. Important Git Concepts</h2>
-
-                <ul class="ticks">
-                    <li><b>Repository:</b> Stores project files and history.</li>
-                    <li><b>Working Directory:</b> Where developers edit files.</li>
-                    <li><b>Staging Area:</b> Holds changes selected for the next commit.</li>
-                    <li><b>Commit:</b> A recorded snapshot of changes.</li>
-                    <li><b>Branch:</b> An independent line of development.</li>
-                    <li><b>Remote:</b> A repository hosted somewhere else, such as GitHub.</li>
-                </ul>
-            </section>
-
-            <section class="block">
-                <h2>6. Basic Git Commands</h2>
-
-                <div class="grid3">
-                    <div class="mini">
-                        <b>git init</b>
-                        <p>Creates a new local Git repository.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>git add</b>
-                        <p>Stages changes for a commit.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>git commit</b>
-                        <p>Saves a snapshot in repository history.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>git status</b>
-                        <p>Shows the current state of files.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>git push</b>
-                        <p>Uploads local commits to a remote repository.</p>
-                    </div>
-
-                    <div class="mini">
-                        <b>git pull</b>
-                        <p>Fetches and integrates remote changes.</p>
-                    </div>
+                <div class="mini">
+                    <b>Centralized VCS</b>
+                    <p>Uses a central server to store project history.</p>
                 </div>
-            </section>
-
-            <section class="block">
-                <h2>7. Clone, Push and Pull</h2>
-
-                <ul class="ticks">
-                    <li><b>Clone:</b> Copies a remote repository to your computer.</li>
-                    <li><b>Push:</b> Sends your committed changes to the remote repository.</li>
-                    <li><b>Pull:</b> Fetches and integrates changes from the remote repository.</li>
-                </ul>
-            </section>
-
-            <section class="block">
-                <h2>8. Why SCM Matters in DevTrack</h2>
-
-                <p>
-                    Bhoomika and Ayush use Git branches and GitHub
-                    pull requests to develop different features,
-                    review changes and integrate their work safely.
-                    This helps maintain project history and supports
-                    teamwork.
-                </p>
-            </section>
-
-            <div class="actions">
-                <a class="btn ghost" href="{{ url_for('lessons') }}">
-                    Back to All Modules
-                </a>
+                <div class="mini">
+                    <b>Distributed VCS</b>
+                    <p>Each developer can maintain a complete local repository.</p>
+                </div>
             </div>
+        </section>
 
+        <section class="block">
+            <h2>4. What is Git?</h2>
+            <p>Git is a distributed version control system. It allows developers to track changes, create branches and collaborate on projects.</p>
+        </section>
+
+        <section class="block">
+            <h2>5. Important Git Concepts</h2>
+            <ul class="ticks">
+                <li><b>Repository:</b> Stores project files and their history.</li>
+                <li><b>Working Directory:</b> Where developers edit files.</li>
+                <li><b>Staging Area:</b> Holds changes selected for the next commit.</li>
+                <li><b>Commit:</b> A recorded snapshot of changes.</li>
+                <li><b>Branch:</b> An independent line of development.</li>
+                <li><b>Remote:</b> A repository hosted elsewhere, such as GitHub.</li>
+            </ul>
+        </section>
+
+        <section class="block">
+            <h2>6. Clone, Push and Pull</h2>
+            <ul class="ticks">
+                <li><code>git clone</code> copies a remote repository locally.</li>
+                <li><code>git push</code> uploads local commits to a remote.</li>
+                <li><code>git pull</code> fetches and integrates remote changes.</li>
+            </ul>
+        </section>
+
+        <section class="block">
+            <h2>7. Why SCM Matters in DevTrack</h2>
+            <p>Bhoomika and Ayush use Git branches and GitHub pull requests to develop different features, review changes and integrate the project safely.</p>
+        </section>
+
+        <div class="actions">
+            <a class="btn ghost" href="{{ url_for('lessons') }}">All modules</a>
         </div>
-    </main>
 
-</body>
-</html>
+    </div>
+</div>
+{% endblock %}

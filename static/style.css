@@ -349,3 +349,305 @@ footer {
         padding: 16px 5%;
     }
 }
+/* Keep the DevTrack infinity logo at a fixed size */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand svg {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px;
+    max-width: 26px;
+    flex-shrink: 0;
+    display: inline-block;
+    overflow: visible;
+}
+
+/* =========================================
+   DEVTRACK HOMEPAGE LAYOUT FIX
+========================================= */
+
+html, body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.wrap {
+    width: min(1120px, 92%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+    padding: 70px 0;
+}
+
+.hero > div,
+.hero > aside {
+    min-width: 0;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 4.5vw, 60px);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+}
+
+.hero p {
+    max-width: 600px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.pipeline {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    min-width: 0;
+}
+
+.pipeline h2 {
+    font-size: 23px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+}
+
+.step b,
+.step small {
+    display: block;
+}
+
+.step small {
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+.dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--dev);
+    box-shadow: 0 0 12px var(--dev);
+}
+
+.step.ops .dot {
+    background: var(--ops);
+    box-shadow: 0 0 12px var(--ops);
+}
+
+.path {
+    padding: 45px 0 70px;
+}
+
+.section-title {
+    font-size: clamp(25px, 3vw, 36px);
+    margin-bottom: 30px;
+}
+
+.path-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.pt {
+    min-width: 0;
+    border-top: 2px solid var(--dev);
+    padding-top: 22px;
+}
+
+.pt span {
+    color: var(--dev);
+    font-weight: bold;
+}
+
+.pt h3 {
+    color: var(--text);
+    margin-top: 10px;
+    overflow-wrap: anywhere;
+}
+
+.pt p {
+    font-size: 15px;
+}
+
+/* Keep the navigation logo small */
+
+.nav .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav .brand svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+/* Mobile and small screens */
+
+@media (max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+    }
+
+    .path-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .path-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .pipeline {
+        padding: 20px;
+    }
+}
+
+
+/* ===== DEVTRACK QUIZ FIX ===== */
+
+/* Respect the HTML hidden attribute */
+[hidden] {
+    display: none !important;
+}
+
+/* Quiz answer buttons */
+.options-container .option {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    text-align: left;
+    background: #111c36;
+    color: #e8edff;
+    border: 1px solid #263451;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.options-container .option:hover:not(:disabled) {
+    background: #172947;
+    border-color: #35e0d0;
+}
+
+.options-container .option.selected {
+    background: #123d42;
+    border: 2px solid #35e0d0;
+    color: #ffffff;
+}
+
+.options-container .option.correct {
+    background: #12452f;
+    border-color: #4ade80;
+}
+
+.options-container .option.incorrect {
+    background: #4b202a;
+    border-color: #fb7185;
+}
+
+.options-container .option:disabled {
+    cursor: default;
+}
+
+/* =====================================
+   DEVTRACK QUIZ - INTERACTION FIX
+===================================== */
+
+/* Hide elements until JavaScript displays them */
+[hidden] {
+    display: none !important;
+}
+
+/* Quiz option buttons */
+.options-container .option {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    margin: 10px 0;
+    text-align: left;
+    color: #e8edff;
+    background: #111c36;
+    border: 1px solid #263451;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Hover effect */
+.options-container .option:hover:not(:disabled) {
+    background: #172947;
+    border-color: #35e0d0;
+}
+
+/* Selected option */
+.options-container .option.selected {
+    background: #123d42 !important;
+    border: 2px solid #35e0d0 !important;
+    color: #ffffff !important;
+}
+
+/* Correct answer */
+.options-container .option.correct {
+    background: #12452f !important;
+    border-color: #4ade80 !important;
+}
+
+/* Incorrect answer */
+.options-container .option.incorrect {
+    background: #4b202a !important;
+    border-color: #fb7185 !important;
+}
+
+/* Answer feedback */
+.feedback.success {
+    color: #4ade80;
+}
+
+.feedback.error {
+    color: #fb7185;
+}
+
+/* Quiz buttons */
+.quiz-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}

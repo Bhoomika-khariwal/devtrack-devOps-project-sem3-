@@ -1,123 +1,77 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevTrack | Introduction to DevOps</title>
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='lessons.css') }}">
-</head>
-<body>
-    <header class="header">
-        <a href="/" class="brand">DevTrack</a>
-        <span>Learning Module 01</span>
-    </header>
 {% extends "base.html" %}
+
 {% block title %}DevTrack | DevOps Fundamentals{% endblock %}
 
 {% block content %}
 <div class="wrap">
-  <header class="page-head">
-    <a class="back" href="{{ url_for('lessons') }}">Back to modules</a>
-    <h1>DevOps Fundamentals</h1>
-    <p>Module 01 · Beginner level · about 10 minutes</p>
-  </header>
 
-  <div class="lesson">
-    <section class="block">
-      <h2>What is DevOps?</h2>
-      <p>DevOps is a way of working where development and operations teams share responsibility for building, releasing and running software. Instead of handing code over a wall, one team owns it from idea to production.</p>
-    </section>
+    <header class="page-head">
+        <a class="back" href="{{ url_for('lessons') }}">← Back to modules</a>
+        <h1>DevOps Fundamentals</h1>
+        <p>Module 01 · Beginner level · About 10 minutes</p>
+    </header>
 
-    <section class="block">
-      <h2>Core principles</h2>
-      <div class="grid3">
-        <div class="mini"><b>Collaboration</b><p>Developers and operations work as one team.</p></div>
-        <div class="mini"><b>Automation</b><p>Build, test and deploy without manual steps.</p></div>
-        <div class="mini"><b>Continuous feedback</b><p>Monitoring in production feeds the next plan.</p></div>
-      </div>
-    </section>
+    <div class="lesson">
 
-    <section class="block">
-      <h2>The DevOps lifecycle</h2>
-      <div class="cycle">
-        <span class="dev">Plan</span><span class="dev">Code</span><span class="dev">Build</span><span class="dev">Test</span>
-        <span class="ops">Release</span><span class="ops">Deploy</span><span class="ops">Operate</span><span class="ops">Monitor</span>
-      </div>
-      <p>The lifecycle is a loop, not a line. What you learn while monitoring goes straight back into planning.</p>
-    </section>
-
-    <section class="block">
-      <h2>Why it matters</h2>
-      <ul class="ticks">
-        <li>Faster releases with fewer manual errors</li>
-        <li>Problems found early, when they are cheap to fix</li>
-        <li>Teams that share goals instead of blaming each other</li>
-      </ul>
-    </section>
-
-    <div class="actions">
-      <a class="btn ghost" href="{{ url_for('lessons') }}">All modules</a>
-    </div>
-  </div>
-</div>
-{% endblock %}
-    <main class="content">
-        <p class="label">MODULE 01 · BEGINNER</p>
-        <h1>Introduction to DevOps</h1>
-        <p class="intro">
-            Understand how development and operations teams work together
-            to deliver software faster and more reliably.
-        </p>
-
-        <section class="lesson-card">
+        <section class="block">
             <h2>1. What is DevOps?</h2>
-            <p>
-                DevOps is a combination of Development and Operations.
-                It encourages teams to collaborate, automate repetitive
-                tasks, test software continuously and deliver updates
-                more reliably.
-            </p>
+            <p>DevOps is a combination of Development and Operations. It encourages teams to collaborate, automate repetitive tasks, test software continuously and deliver updates reliably.</p>
         </section>
 
-        <section class="lesson-card">
-            <h2>2. Why do we need DevOps?</h2>
-            <ul>
-                <li>Improves collaboration between teams.</li>
-                <li>Reduces repetitive manual work through automation.</li>
-                <li>Helps detect errors earlier through testing.</li>
-                <li>Supports faster and more reliable software releases.</li>
+        <section class="block">
+            <h2>2. Core Principles</h2>
+            <div class="grid3">
+                <div class="mini">
+                    <b>Collaboration</b>
+                    <p>Development and operations teams work together.</p>
+                </div>
+                <div class="mini">
+                    <b>Automation</b>
+                    <p>Build, test and deploy without repetitive manual steps.</p>
+                </div>
+                <div class="mini">
+                    <b>Continuous Feedback</b>
+                    <p>Monitoring helps teams improve their software.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>3. DevOps Lifecycle</h2>
+            <div class="cycle">
+                <span class="dev">Plan</span>
+                <span class="dev">Code</span>
+                <span class="dev">Build</span>
+                <span class="dev">Test</span>
+                <span class="ops">Release</span>
+                <span class="ops">Deploy</span>
+                <span class="ops">Operate</span>
+                <span class="ops">Monitor</span>
+            </div>
+            <p>The DevOps lifecycle is continuous. Feedback from monitoring helps teams plan further improvements.</p>
+        </section>
+
+        <section class="block">
+            <h2>4. Why is DevOps Important?</h2>
+            <ul class="ticks">
+                <li>Faster software releases.</li>
+                <li>Better teamwork and collaboration.</li>
+                <li>Early detection of errors.</li>
+                <li>Less repetitive manual work.</li>
+                <li>More reliable software delivery.</li>
             </ul>
         </section>
 
-        <section class="lesson-card">
-            <h2>3. DevOps lifecycle</h2>
-            <div class="lifecycle">
-                <span>Plan</span>
-                <span>Code</span>
-                <span>Build</span>
-                <span>Test</span>
-                <span>Deploy</span>
-                <span>Monitor</span>
-            </div>
-            <p>
-                These activities form a continuous cycle. Feedback from
-                monitoring helps teams plan further improvements.
-            </p>
+        <section class="block">
+            <h2>5. What is CI/CD?</h2>
+            <p>Continuous Integration (CI) helps developers integrate code changes frequently and test them automatically. Continuous Delivery or Deployment (CD) automates the process of preparing or releasing software.</p>
         </section>
 
-        <section class="lesson-card">
-            <h2>4. What is CI/CD?</h2>
-            <p>
-                Continuous Integration (CI) helps developers integrate
-                code changes frequently and test them automatically.
-                Continuous Delivery or Deployment (CD) helps prepare or
-                release tested changes through an automated pipeline.
-            </p>
-        </section>
+        <div class="actions">
+            <a class="btn ghost" href="{{ url_for('lessons') }}">All modules</a>
+        </div>
 
-        <a class="back-link" href="/">Back to Home</a>
-    </main>
-</body>
-</html>
+    </div>
+</div>
+{% endblock %}
