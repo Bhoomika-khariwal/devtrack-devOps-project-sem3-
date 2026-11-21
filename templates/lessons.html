@@ -5,95 +5,499 @@
 
 {% block content %}
 
-{% set modules = [
-    {
-        "n": "01",
-        "title": "DevOps Fundamentals",
-        "text": "Understand DevOps, its principles, benefits and lifecycle.",
-        "stage": "Plan",
-        "link": "/lessons/devops-basics",
-        "c": "#36d6c5"
-    },
-    {
-        "n": "02",
-        "title": "SCM and Version Control",
-        "text": "Learn repositories, commits, version control and collaboration.",
-        "stage": "Code",
-        "link": "/lessons/scm-basics",
-        "c": "#36d6c5"
-    },
-    {
-        "n": "03",
-        "title": "Git and GitHub",
-        "text": "Explore branches, push, pull, merging and pull requests.",
-        "stage": "Build",
-        "link": None,
-        "c": "#36d6c5"
-    },
-    {
-        "n": "04",
-        "title": "CI/CD Fundamentals",
-        "text": "Discover automated building, testing and deployment.",
-        "stage": "Deploy",
-        "link": None,
-        "c": "#36d6c5"
+<style>
+    .dt-learning-page {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 45px 25px 80px;
+        color: #e9efff;
     }
-] %}
 
-<div class="wrap">
+    .dt-learning-header {
+        text-align: center;
+        padding: 45px 20px;
+        margin-bottom: 35px;
+        background: linear-gradient(
+            135deg,
+            #111b35,
+            #152b3c
+        );
+        border: 1px solid #263956;
+        border-radius: 22px;
+    }
 
-    <header class="page-head">
-        <h1>DevOps Learning Modules</h1>
-        <p>Build your understanding one topic at a time.</p>
-    </header>
+    .dt-learning-label {
+        color: #36d9d0;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
 
-    <section class="timeline">
+    .dt-learning-header h1 {
+        font-size: clamp(30px, 5vw, 48px);
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 18px;
+    }
 
-        {% for m in modules %}
+    .dt-learning-header p {
+        max-width: 720px;
+        margin: 0 auto;
+        color: #a6b6d2;
+        font-size: 16px;
+        line-height: 1.8;
+    }
 
-        <article class="module" style="--c: {{ m.c }}">
+    .dt-learning-stats {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
 
-            <div>
-                <span class="num">Module {{ m.n }}</span>
+    .dt-stat {
+        background: #0d172c;
+        border: 1px solid #2c3b58;
+        border-radius: 12px;
+        padding: 15px 25px;
+        min-width: 135px;
+        text-align: center;
+    }
 
-                <h2>{{ m.title }}</h2>
+    .dt-stat strong {
+        display: block;
+        color: #36d9d0;
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
 
-                <p>{{ m.text }}</p>
+    .dt-stat span {
+        color: #a6b6d2;
+        font-size: 13px;
+    }
 
-                <div class="chips">
-                    <span class="chip">Beginner level</span>
-                    <span class="chip stage">{{ m.stage }}</span>
-                </div>
+    .dt-section-heading {
+        margin: 35px 0 25px;
+    }
+
+    .dt-section-heading h2 {
+        font-size: 27px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    .dt-section-heading p {
+        color: #a6b6d2;
+        line-height: 1.7;
+    }
+
+    .dt-modules-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .dt-module-card {
+        background: #111b33;
+        border: 1px solid #2b3a59;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        min-height: 380px;
+        transition: transform 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease;
+    }
+
+    .dt-module-card:hover {
+        transform: translateY(-5px);
+        border-color: #36d9d0;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .dt-module-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .dt-module-number {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #36d9d0;
+    }
+
+    .dt-module-status {
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 12px;
+        border-radius: 30px;
+        background: #153b3c;
+        color: #5de5ce;
+        border: 1px solid #256e69;
+    }
+
+    .dt-module-status.soon {
+        background: #242b40;
+        color: #9ca9c2;
+        border-color: #39435d;
+    }
+
+    .dt-module-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #163947;
+        border: 1px solid #286b71;
+        border-radius: 16px;
+        font-size: 27px;
+        margin-bottom: 20px;
+    }
+
+    .dt-module-card h3 {
+        font-size: 23px;
+        color: #ffffff;
+        margin-bottom: 14px;
+        line-height: 1.4;
+    }
+
+    .dt-module-description {
+        color: #a6b6d2;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .dt-module-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .dt-topic-tag {
+        padding: 6px 10px;
+        background: #1b2943;
+        color: #b9c9e5;
+        border: 1px solid #2b3d5c;
+        border-radius: 8px;
+        font-size: 12px;
+    }
+
+    .dt-module-action {
+        margin-top: auto;
+    }
+
+    .dt-start-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 18px;
+        background: #36d9d0;
+        color: #071526;
+        font-weight: 800;
+        text-decoration: none;
+        border-radius: 11px;
+        transition: background 0.2s ease,
+                    transform 0.2s ease;
+    }
+
+    .dt-start-button:hover {
+        background: #64eee4;
+        color: #071526;
+        transform: translateY(-2px);
+    }
+
+    .dt-start-button.disabled {
+        background: #27334b;
+        color: #9ca9c2;
+        cursor: not-allowed;
+        border: 1px solid #39455e;
+        pointer-events: none;
+    }
+
+    .dt-learning-footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background: #101b32;
+        border: 1px solid #293954;
+        border-radius: 18px;
+    }
+
+    .dt-learning-footer h3 {
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    .dt-learning-footer p {
+        color: #a6b6d2;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 800px) {
+        .dt-modules-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .dt-learning-page {
+            padding: 25px 15px 50px;
+        }
+
+        .dt-module-card {
+            min-height: auto;
+            padding: 24px;
+        }
+
+        .dt-learning-header {
+            padding: 35px 18px;
+        }
+    }
+</style>
+
+<main class="dt-learning-page">
+
+    <!-- PAGE HEADER -->
+
+    <header class="dt-learning-header">
+
+        <div class="dt-learning-label">
+            DEVTRACK ACADEMY
+        </div>
+
+        <h1>Explore Learning Modules</h1>
+
+        <p>
+            Build your DevOps skills step by step.
+            Start with the fundamentals, understand
+            software configuration management,
+            practice Git and GitHub, and explore
+            continuous integration and deployment.
+        </p>
+
+        <div class="dt-learning-stats">
+
+            <div class="dt-stat">
+                <strong>04</strong>
+                <span>Total Modules</span>
             </div>
 
-            {% if m.link %}
-                <a class="go" href="{{ m.link }}">
-                    Start module →
+            <div class="dt-stat">
+                <strong>03</strong>
+                <span>Available Now</span>
+            </div>
+
+            <div class="dt-stat">
+                <strong>01</strong>
+                <span>Coming Soon</span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- MODULES HEADING -->
+
+    <div class="dt-section-heading">
+
+        <h2>Your Learning Journey</h2>
+
+        <p>
+            Choose a module to explore detailed lessons,
+            examples, flowcharts, interactive activities
+            and knowledge challenges.
+        </p>
+
+    </div>
+
+    <!-- MODULE CARDS -->
+
+    <div class="dt-modules-grid">
+
+        <!-- MODULE 01 -->
+
+        <article class="dt-module-card">
+
+            <div class="dt-module-top">
+                <span class="dt-module-number">MODULE 01</span>
+                <span class="dt-module-status">Available</span>
+            </div>
+
+            <div class="dt-module-icon">🚀</div>
+
+            <h3>DevOps Fundamentals</h3>
+
+            <p class="dt-module-description">
+                Understand what DevOps is, why it matters,
+                how development and operations work together,
+                and how automation improves software delivery.
+            </p>
+
+            <div class="dt-module-topics">
+                <span class="dt-topic-tag">DevOps Lifecycle</span>
+                <span class="dt-topic-tag">CALMS</span>
+                <span class="dt-topic-tag">Automation</span>
+                <span class="dt-topic-tag">Testing</span>
+                <span class="dt-topic-tag">Deployment</span>
+            </div>
+
+            <div class="dt-module-action">
+
+                <a href="{{ url_for('devops_basics') }}"
+                   class="dt-start-button">
+                    Start Learning →
                 </a>
-            {% else %}
-                <span class="go off">Coming soon</span>
-            {% endif %}
+
+            </div>
 
         </article>
 
-        {% endfor %}
+        <!-- MODULE 02 -->
+
+        <article class="dt-module-card">
+
+            <div class="dt-module-top">
+                <span class="dt-module-number">MODULE 02</span>
+                <span class="dt-module-status">Available</span>
+            </div>
+
+            <div class="dt-module-icon">🗂️</div>
+
+            <h3>SCM & Version Control</h3>
+
+            <p class="dt-module-description">
+                Learn Software Configuration Management,
+                configuration items, baselines, version
+                control systems, change management,
+                branching and merging.
+            </p>
+
+            <div class="dt-module-topics">
+                <span class="dt-topic-tag">SCM</span>
+                <span class="dt-topic-tag">Version Control</span>
+                <span class="dt-topic-tag">Git</span>
+                <span class="dt-topic-tag">Branching</span>
+                <span class="dt-topic-tag">Change Control</span>
+            </div>
+
+            <div class="dt-module-action">
+
+                <a href="{{ url_for('scm_basics') }}"
+                   class="dt-start-button">
+                    Start Learning →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- MODULE 03 -->
+
+        <article class="dt-module-card">
+
+            <div class="dt-module-top">
+                <span class="dt-module-number">MODULE 03</span>
+                <span class="dt-module-status">Available</span>
+            </div>
+
+            <div class="dt-module-icon">💻</div>
+
+            <h3>Git & GitHub Masterclass</h3>
+
+            <p class="dt-module-description">
+                Learn Git commands, repositories, commits,
+                branches, merging, pull requests, remote
+                collaboration and advanced Git concepts
+                with interactive practice.
+            </p>
+
+            <div class="dt-module-topics">
+                <span class="dt-topic-tag">Git Bash</span>
+                <span class="dt-topic-tag">GitHub</span>
+                <span class="dt-topic-tag">Merge Conflicts</span>
+                <span class="dt-topic-tag">Pull Requests</span>
+                <span class="dt-topic-tag">Simulator</span>
+            </div>
+
+            <div class="dt-module-action">
+
+                <a href="{{ url_for('git_github') }}"
+                   class="dt-start-button">
+                    Start Learning →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- MODULE 04 -->
+
+        <article class="dt-module-card">
+
+            <div class="dt-module-top">
+                <span class="dt-module-number">MODULE 04</span>
+                <span class="dt-module-status soon">
+                    Coming Soon
+                </span>
+            </div>
+
+            <div class="dt-module-icon">⚙️</div>
+
+            <h3>CI/CD & Automation</h3>
+
+            <p class="dt-module-description">
+                Explore Continuous Integration,
+                Continuous Delivery, GitHub Actions,
+                automated workflows, testing pipelines
+                and deployment automation.
+            </p>
+
+            <div class="dt-module-topics">
+                <span class="dt-topic-tag">CI/CD</span>
+                <span class="dt-topic-tag">GitHub Actions</span>
+                <span class="dt-topic-tag">Workflows</span>
+                <span class="dt-topic-tag">Pipelines</span>
+                <span class="dt-topic-tag">Deployment</span>
+            </div>
+
+            <div class="dt-module-action">
+
+                <span class="dt-start-button disabled"
+                      aria-disabled="true">
+                    Coming Soon
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <section class="dt-learning-footer">
+
+        <h3>Learn. Practice. Test. Improve.</h3>
+
+        <p>
+            DevTrack combines structured learning
+            with interactive activities to help
+            you understand real DevOps workflows.
+        </p>
 
     </section>
 
-    <div style="text-align: center; margin-top: 35px; padding-bottom: 40px;">
-    <a href="/quiz"
-       style="display: inline-block;
-              background: #36d6c5;
-              color: #07111f;
-              padding: 15px 30px;
-              border-radius: 30px;
-              text-decoration: none;
-              font-weight: bold;
-              font-size: 16px;">
-        Take the DevOps Quiz →
-    </a>
-</div>
-
-</div>
+</main>
 
 {% endblock %}
