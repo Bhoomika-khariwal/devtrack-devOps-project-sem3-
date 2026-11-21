@@ -4,74 +4,897 @@
 {% block title %}DevTrack | DevOps Fundamentals{% endblock %}
 
 {% block content %}
-<div class="wrap">
 
-    <header class="page-head">
-        <a class="back" href="{{ url_for('lessons') }}">← Back to modules</a>
+<link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
+
+<div class="learning-page">
+
+    <!-- MODULE HEADER -->
+    <div class="learning-hero">
+        <p class="learning-label">DEVTRACK ACADEMY · MODULE 01</p>
+
         <h1>DevOps Fundamentals</h1>
-        <p>Module 01 · Beginner level · About 10 minutes</p>
-    </header>
 
-    <div class="lesson">
+        <p>
+            Learn DevOps from the beginning. Explore its principles,
+            lifecycle, automation, CI/CD, testing, deployment and
+            real-world applications through simple explanations
+            and interactive activities.
+        </p>
 
-        <section class="block">
-            <h2>1. What is DevOps?</h2>
-            <p>DevOps is a combination of Development and Operations. It encourages teams to collaborate, automate repetitive tasks, test software continuously and deliver updates reliably.</p>
-        </section>
+        <p id="learning-progress-text">0% topics visited</p>
 
-        <section class="block">
-            <h2>2. Core Principles</h2>
-            <div class="grid3">
-                <div class="mini">
-                    <b>Collaboration</b>
-                    <p>Development and operations teams work together.</p>
-                </div>
-                <div class="mini">
-                    <b>Automation</b>
-                    <p>Build, test and deploy without repetitive manual steps.</p>
-                </div>
-                <div class="mini">
-                    <b>Continuous Feedback</b>
-                    <p>Monitoring helps teams improve their software.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="block">
-            <h2>3. DevOps Lifecycle</h2>
-            <div class="cycle">
-                <span class="dev">Plan</span>
-                <span class="dev">Code</span>
-                <span class="dev">Build</span>
-                <span class="dev">Test</span>
-                <span class="ops">Release</span>
-                <span class="ops">Deploy</span>
-                <span class="ops">Operate</span>
-                <span class="ops">Monitor</span>
-            </div>
-            <p>The DevOps lifecycle is continuous. Feedback from monitoring helps teams plan further improvements.</p>
-        </section>
-
-        <section class="block">
-            <h2>4. Why is DevOps Important?</h2>
-            <ul class="ticks">
-                <li>Faster software releases.</li>
-                <li>Better teamwork and collaboration.</li>
-                <li>Early detection of errors.</li>
-                <li>Less repetitive manual work.</li>
-                <li>More reliable software delivery.</li>
-            </ul>
-        </section>
-
-        <section class="block">
-            <h2>5. What is CI/CD?</h2>
-            <p>Continuous Integration (CI) helps developers integrate code changes frequently and test them automatically. Continuous Delivery or Deployment (CD) automates the process of preparing or releasing software.</p>
-        </section>
-
-        <div class="actions">
-            <a class="btn ghost" href="{{ url_for('lessons') }}">All modules</a>
+        <div class="learning-progress">
+            <div id="learning-progress-fill"
+                 class="learning-progress-fill"></div>
         </div>
+    </div>
+
+    <div class="learning-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="learning-sidebar">
+            <h3>Learning Contents</h3>
+
+            <a href="#introduction">01. Introduction</a>
+            <a href="#history">02. History and Need</a>
+            <a href="#comparison">03. Traditional vs DevOps</a>
+            <a href="#principles">04. Principles</a>
+            <a href="#lifecycle">05. DevOps Lifecycle</a>
+            <a href="#tools">06. DevOps Tools</a>
+            <a href="#cicd">07. CI/CD</a>
+            <a href="#testing">08. Testing</a>
+            <a href="#deployment">09. Deployment</a>
+            <a href="#example">10. Real-world Example</a>
+            <a href="#practice">11. Practice Activity</a>
+            <a href="#summary">12. Summary</a>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <article class="learning-content">
+
+            <!-- SECTION 1 -->
+            <section id="introduction" class="learning-section">
+
+                <h2>1. Introduction to DevOps</h2>
+
+                <p>
+                    DevOps combines software Development (Dev)
+                    and IT Operations (Ops). It is a combination
+                    of culture, practices, processes and tools
+                    that helps organizations develop and deliver
+                    software faster and more reliably.
+                </p>
+
+                <h3>What is Development?</h3>
+
+                <p>
+                    Development involves planning, designing,
+                    writing, testing and improving application code.
+                    Developers create new features and fix bugs.
+                </p>
+
+                <h3>What is Operations?</h3>
+
+                <p>
+                    Operations involves deploying, running,
+                    monitoring, maintaining and supporting
+                    applications and their infrastructure.
+                </p>
+
+                <div class="learning-flow">
+                    <span>Development</span>
+                    <b>+</b>
+                    <span>Operations</span>
+                    <b>→</b>
+                    <span>DevOps</span>
+                </div>
+
+                <h3>Main Goal of DevOps</h3>
+
+                <ul>
+                    <li>Improve collaboration between teams.</li>
+                    <li>Deliver software faster and more reliably.</li>
+                    <li>Automate repetitive development tasks.</li>
+                    <li>Detect errors early through continuous testing.</li>
+                    <li>Improve software quality and stability.</li>
+                </ul>
+
+                <div class="learning-note">
+                    <strong>Example:</strong>
+                    A shopping website needs a new payment feature.
+                    Developers write the feature, testers verify it,
+                    and operations deploys and monitors it.
+                    DevOps helps these activities work together
+                    through a continuous automated workflow.
+                </div>
+
+            </section>
+
+            <!-- SECTION 2 -->
+            <section id="history" class="learning-section">
+
+                <h2>2. History and Need for DevOps</h2>
+
+                <p>
+                    Earlier, software development and operations
+                    teams often worked separately. Developers
+                    focused on creating new features, while
+                    operations teams focused on system stability.
+                </p>
+
+                <p>
+                    This separation sometimes caused slow releases,
+                    communication problems, deployment failures
+                    and difficulties in fixing production issues.
+                </p>
+
+                <h3>How DevOps Evolved</h3>
+
+                <div class="learning-flow">
+                    <span>Traditional Development</span>
+                    <b>→</b>
+                    <span>Agile</span>
+                    <b>→</b>
+                    <span>DevOps</span>
+                </div>
+
+                <p>
+                    Agile improved software development through
+                    short iterations and frequent feedback.
+                    DevOps extends collaboration into testing,
+                    delivery, deployment, operations and monitoring.
+                </p>
+
+                <h3>Why Do We Need DevOps?</h3>
+
+                <ul>
+                    <li>To reduce delays in software delivery.</li>
+                    <li>To improve communication between teams.</li>
+                    <li>To automate building, testing and deployment.</li>
+                    <li>To detect bugs earlier.</li>
+                    <li>To reduce repetitive manual work.</li>
+                    <li>To support continuous feedback and improvement.</li>
+                </ul>
+
+                <details class="learning-details">
+                    <summary>Real-world example</summary>
+                    <p>
+                        Imagine a college portal where developers
+                        add an online fee-payment feature.
+                        Without coordinated processes, deployment
+                        might be delayed. With DevOps, the team
+                        can use version control, automated tests
+                        and a deployment pipeline to deliver
+                        the feature more reliably.
+                    </p>
+                </details>
+
+            </section>
+
+            <!-- SECTION 3 -->
+            <section id="comparison" class="learning-section">
+
+                <h2>3. Traditional Development vs DevOps</h2>
+
+                <table class="learning-table">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Traditional Approach</th>
+                        <th>DevOps</th>
+                    </tr>
+                    <tr>
+                        <td>Teamwork</td>
+                        <td>Teams often work separately</td>
+                        <td>Shared collaboration</td>
+                    </tr>
+                    <tr>
+                        <td>Testing</td>
+                        <td>May happen late</td>
+                        <td>Integrated throughout development</td>
+                    </tr>
+                    <tr>
+                        <td>Deployment</td>
+                        <td>Often manual</td>
+                        <td>Frequently automated</td>
+                    </tr>
+                    <tr>
+                        <td>Feedback</td>
+                        <td>May be delayed</td>
+                        <td>Continuous feedback encouraged</td>
+                    </tr>
+                    <tr>
+                        <td>Release Frequency</td>
+                        <td>Often less frequent</td>
+                        <td>Supports frequent releases</td>
+                    </tr>
+                    <tr>
+                        <td>Responsibility</td>
+                        <td>Often divided by department</td>
+                        <td>Shared across the delivery lifecycle</td>
+                    </tr>
+                </table>
+
+                <h3>Agile vs DevOps</h3>
+
+                <p>
+                    Agile is a software development approach
+                    focused on iterative development, customer
+                    feedback and adapting to changing requirements.
+                </p>
+
+                <p>
+                    DevOps complements Agile by connecting
+                    development with testing, delivery,
+                    operations and monitoring.
+                </p>
+
+                <div class="learning-note">
+                    Agile and DevOps are not competitors.
+                    A software team can use both together.
+                </div>
+
+            </section>
+
+            <!-- SECTION 4 -->
+            <section id="principles" class="learning-section">
+
+                <h2>4. Core Principles of DevOps</h2>
+
+                <div class="learning-grid">
+
+                    <div class="learning-tile">
+                        <h3>Collaboration</h3>
+                        <p>
+                            Developers, testers and operations
+                            teams work toward shared goals.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Automation</h3>
+                        <p>
+                            Repetitive tasks such as builds,
+                            tests and deployments are automated.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Continuous Improvement</h3>
+                        <p>
+                            Teams learn from monitoring,
+                            feedback and previous failures.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Shared Responsibility</h3>
+                        <p>
+                            Teams cooperate to maintain
+                            software quality and reliability.
+                        </p>
+                    </div>
+
+                </div>
+
+                <h3>CALMS Framework</h3>
+
+                <p>
+                    CALMS describes five important aspects
+                    of DevOps culture and practices.
+                </p>
+
+                <details class="learning-details">
+                    <summary>C — Culture</summary>
+                    <p>
+                        Encourage communication, teamwork,
+                        trust and shared responsibility.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>A — Automation</summary>
+                    <p>
+                        Automate repetitive tasks to improve
+                        consistency and reduce manual errors.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>L — Lean</summary>
+                    <p>
+                        Reduce unnecessary work, delays and
+                        waste in the software delivery process.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>M — Measurement</summary>
+                    <p>
+                        Measure deployment performance,
+                        reliability, errors and recovery time.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>S — Sharing</summary>
+                    <p>
+                        Share knowledge, feedback, tools
+                        and lessons learned across teams.
+                    </p>
+                </details>
+
+            </section>
+
+            <!-- SECTION 5 -->
+            <section id="lifecycle" class="learning-section">
+
+                <h2>5. DevOps Lifecycle</h2>
+
+                <p>
+                    The DevOps lifecycle is a continuous
+                    process used to develop, test, release,
+                    operate and improve software.
+                </p>
+
+                <div class="learning-flow">
+                    <span>Plan</span><b>→</b>
+                    <span>Code</span><b>→</b>
+                    <span>Build</span><b>→</b>
+                    <span>Test</span><b>→</b>
+                    <span>Release</span><b>→</b>
+                    <span>Deploy</span><b>→</b>
+                    <span>Operate</span><b>→</b>
+                    <span>Monitor</span><b>↻</b>
+                </div>
+
+                <p>
+                    Click each stage to understand its purpose.
+                </p>
+
+                <details class="learning-details">
+                    <summary>1. Plan</summary>
+                    <p>
+                        Gather requirements, identify features,
+                        prioritize tasks and plan development.
+                        Tools include Jira and GitHub Issues.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>2. Code</summary>
+                    <p>
+                        Developers write and maintain source code.
+                        Git tracks changes and supports collaboration.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>3. Build</summary>
+                    <p>
+                        Source code and dependencies are prepared
+                        to create executable software or deployable
+                        artifacts.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>4. Test</summary>
+                    <p>
+                        Automated tests verify functionality
+                        and help identify bugs before release.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>5. Release</summary>
+                    <p>
+                        A tested software version is packaged,
+                        versioned and prepared for delivery.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>6. Deploy</summary>
+                    <p>
+                        The application is installed or updated
+                        in a target environment such as staging
+                        or production.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>7. Operate</summary>
+                    <p>
+                        Teams maintain the running application,
+                        infrastructure, availability and services.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>8. Monitor</summary>
+                    <p>
+                        Logs, metrics and alerts help detect
+                        errors and performance problems.
+                        Feedback is used for future improvements.
+                    </p>
+                </details>
+
+            </section>
+
+            <!-- SECTION 6 -->
+            <section id="tools" class="learning-section">
+
+                <h2>6. Popular DevOps Tools</h2>
+
+                <p>
+                    Different tools support different
+                    stages of the DevOps lifecycle.
+                </p>
+
+                <div class="learning-grid">
+
+                    <div class="learning-tile">
+                        <h3>Git</h3>
+                        <p>Distributed version control system.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>GitHub</h3>
+                        <p>Repository hosting and collaboration.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>GitHub Actions</h3>
+                        <p>Workflow and CI/CD automation.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Jenkins</h3>
+                        <p>Automation server for CI/CD pipelines.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Docker</h3>
+                        <p>Packages applications into containers.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Ansible</h3>
+                        <p>Configuration management and automation.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Terraform</h3>
+                        <p>Infrastructure as Code.</p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Prometheus</h3>
+                        <p>Metrics collection and monitoring.</p>
+                    </div>
+
+                </div>
+
+                <h3>Example Git Workflow</h3>
+
+                <pre class="learning-code">git init
+git add .
+git commit -m "Initial commit"
+git branch feature-login
+git switch feature-login
+git push -u origin feature-login</pre>
+
+                <p>
+                    This example initializes a repository,
+                    commits changes, creates a feature branch,
+                    switches to it and pushes it to a configured
+                    remote named origin.
+                </p>
+
+            </section>
+
+            <!-- SECTION 7 -->
+            <section id="cicd" class="learning-section">
+
+                <h2>7. Introduction to CI/CD</h2>
+
+                <h3>Continuous Integration (CI)</h3>
+
+                <p>
+                    Continuous Integration means developers
+                    frequently integrate code changes into
+                    a shared repository. Automated builds
+                    and tests help detect problems early.
+                </p>
+
+                <h3>Continuous Delivery</h3>
+
+                <p>
+                    Continuous Delivery means software is
+                    automatically built, tested and prepared
+                    for release. Production deployment may
+                    still require manual approval.
+                </p>
+
+                <h3>Continuous Deployment</h3>
+
+                <p>
+                    Continuous Deployment automatically
+                    releases changes to production after
+                    all required automated checks pass.
+                </p>
+
+                <div class="learning-flow">
+                    <span>Push Code</span><b>→</b>
+                    <span>Build</span><b>→</b>
+                    <span>Test</span><b>→</b>
+                    <span>Release</span><b>→</b>
+                    <span>Deploy</span>
+                </div>
+
+                <h3>Benefits of CI/CD</h3>
+
+                <ul>
+                    <li>Early detection of integration errors.</li>
+                    <li>Faster feedback on code changes.</li>
+                    <li>Repeatable builds and tests.</li>
+                    <li>More consistent software releases.</li>
+                    <li>Reduced repetitive manual work.</li>
+                </ul>
+
+                <div class="learning-note">
+                    Module 04 will explore CI/CD pipelines
+                    and GitHub Actions in greater detail.
+                </div>
+
+            </section>
+
+            <!-- SECTION 8 -->
+            <section id="testing" class="learning-section">
+
+                <h2>8. Testing in DevOps</h2>
+
+                <p>
+                    Software testing verifies whether an
+                    application behaves as expected.
+                    Automated testing allows checks to run
+                    repeatedly whenever code changes.
+                </p>
+
+                <div class="learning-grid">
+
+                    <div class="learning-tile">
+                        <h3>Unit Testing</h3>
+                        <p>
+                            Tests individual functions
+                            or components.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Integration Testing</h3>
+                        <p>
+                            Checks whether different
+                            components work together.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>System Testing</h3>
+                        <p>
+                            Tests the complete integrated
+                            application.
+                        </p>
+                    </div>
+
+                    <div class="learning-tile">
+                        <h3>Regression Testing</h3>
+                        <p>
+                            Checks that new changes have
+                            not broken existing functionality.
+                        </p>
+                    </div>
+
+                </div>
+
+                <h3>Example: Python Unit Test</h3>
+
+                <pre class="learning-code">def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(2, 3) == 5</pre>
+
+                <p>
+                    The test checks whether the add()
+                    function returns the expected result.
+                    A tool such as pytest can run the test
+                    and report whether it passes or fails.
+                </p>
+
+                <h3>Why Automate Testing?</h3>
+
+                <ul>
+                    <li>Tests can run after every code change.</li>
+                    <li>Problems can be identified earlier.</li>
+                    <li>Teams receive faster feedback.</li>
+                    <li>Repetitive manual testing is reduced.</li>
+                </ul>
+
+            </section>
+
+            <!-- SECTION 9 -->
+            <section id="deployment" class="learning-section">
+
+                <h2>9. Deployment and Monitoring</h2>
+
+                <p>
+                    Deployment is the process of making
+                    an application version available
+                    in its target environment.
+                </p>
+
+                <h3>Deployment Strategies</h3>
+
+                <details class="learning-details">
+                    <summary>Rolling Deployment</summary>
+                    <p>
+                        Application instances are updated
+                        gradually rather than all at once.
+                        This can help maintain availability
+                        during deployment.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>Blue-Green Deployment</summary>
+                    <p>
+                        Two environments are maintained.
+                        The new version is tested in one
+                        environment before traffic is
+                        switched to it.
+                    </p>
+                </details>
+
+                <details class="learning-details">
+                    <summary>Canary Deployment</summary>
+                    <p>
+                        A new version is released to a
+                        small group of users first.
+                        Its performance is checked before
+                        expanding the rollout.
+                    </p>
+                </details>
+
+                <h3>What is Rollback?</h3>
+
+                <p>
+                    Rollback means returning to an earlier
+                    working version when a new release
+                    causes problems.
+                </p>
+
+                <h3>Why is Monitoring Important?</h3>
+
+                <ul>
+                    <li>Detect application errors.</li>
+                    <li>Track response times and performance.</li>
+                    <li>Monitor resource usage and availability.</li>
+                    <li>Identify problems after deployment.</li>
+                    <li>Support troubleshooting and improvement.</li>
+                </ul>
+
+                <div class="learning-flow">
+                    <span>Deploy</span><b>→</b>
+                    <span>Monitor</span><b>→</b>
+                    <span>Feedback</span><b>→</b>
+                    <span>Improve</span>
+                </div>
+
+            </section>
+
+            <!-- SECTION 10 -->
+            <section id="example" class="learning-section">
+
+                <h2>10. Real-world DevOps Example</h2>
+
+                <p>
+                    Imagine a college team developing
+                    a Student Attendance Management System.
+                </p>
+
+                <h3>How DevOps Helps This Project</h3>
+
+                <ol>
+                    <li>
+                        <strong>Plan:</strong>
+                        The team decides to add an
+                        attendance report feature.
+                    </li>
+                    <li>
+                        <strong>Code:</strong>
+                        A developer writes code on
+                        a feature branch.
+                    </li>
+                    <li>
+                        <strong>Version Control:</strong>
+                        The developer pushes the branch
+                        to GitHub.
+                    </li>
+                    <li>
+                        <strong>Collaboration:</strong>
+                        A pull request is created
+                        for code review.
+                    </li>
+                    <li>
+                        <strong>Testing:</strong>
+                        GitHub Actions runs automated tests.
+                    </li>
+                    <li>
+                        <strong>Integration:</strong>
+                        The team reviews and merges
+                        the changes.
+                    </li>
+                    <li>
+                        <strong>Deployment:</strong>
+                        A deployment workflow releases
+                        the updated application.
+                    </li>
+                    <li>
+                        <strong>Monitoring:</strong>
+                        The team checks logs and metrics
+                        for any new problems.
+                    </li>
+                </ol>
+
+                <div class="learning-note">
+                    This example connects planning,
+                    development, collaboration, testing,
+                    deployment and monitoring into
+                    one continuous workflow.
+                </div>
+
+            </section>
+
+            <!-- SECTION 11: RANDOMIZED QUIZ -->
+            <section id="practice" class="learning-section">
+
+                <h2>11. Interactive DevOps Knowledge Challenge</h2>
+
+                <p>
+                    Test your DevOps knowledge with 8 randomly
+                    selected questions from a bank of 20 MCQs.
+                    Questions and answer positions change
+                    between attempts.
+                </p>
+
+                <div id="module-quiz" class="module-quiz">
+
+                    <div class="module-quiz-top">
+                        <span id="mq-counter">Question 1 of 8</span>
+                        <span id="mq-score">Score: 0</span>
+                    </div>
+
+                    <div class="learning-progress">
+                        <div id="mq-progress"
+                             class="learning-progress-fill"></div>
+                    </div>
+
+                    <div id="mq-question-panel">
+
+                        <h3 id="mq-question">
+                            Loading question...
+                        </h3>
+
+                        <div id="mq-options"
+                             class="mq-options"></div>
+
+                        <p id="mq-feedback"
+                           class="learning-check-result"
+                           aria-live="polite"></p>
+
+                        <div class="learning-actions">
+
+                            <button id="mq-submit"
+                                    type="button"
+                                    class="learning-button">
+                                Check Answer
+                            </button>
+
+                            <button id="mq-next"
+                                    type="button"
+                                    class="learning-button"
+                                    hidden>
+                                Next Question →
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div id="mq-result" hidden>
+
+                        <h2>Challenge Completed!</h2>
+
+                        <h3 id="mq-final-score"></h3>
+
+                        <p id="mq-result-message"></p>
+
+                        <button id="mq-retry"
+                                type="button"
+                                class="learning-button">
+                            Try Different Questions
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="learning-actions">
+                    <a class="learning-button"
+                       href="{{ url_for('quiz') }}">
+                        Take Full Quiz →
+                    </a>
+                </div>
+
+            </section>
+
+            <!-- SECTION 12 -->
+            <section id="summary" class="learning-section">
+
+                <h2>12. Module Summary</h2>
+
+                <p>
+                    Congratulations on completing
+                    DevOps Fundamentals!
+                </p>
+
+                <h3>What You Have Learned</h3>
+
+                <ul>
+                    <li>Meaning and importance of DevOps.</li>
+                    <li>Development and operations responsibilities.</li>
+                    <li>Traditional development vs DevOps.</li>
+                    <li>Core DevOps principles and CALMS.</li>
+                    <li>The eight-stage DevOps lifecycle.</li>
+                    <li>Popular DevOps tools and their uses.</li>
+                    <li>Continuous Integration and CI/CD.</li>
+                    <li>Automated software testing.</li>
+                    <li>Deployment strategies and rollback.</li>
+                    <li>Monitoring and continuous feedback.</li>
+                    <li>A real-world DevOps workflow.</li>
+                </ul>
+
+                <div class="learning-note">
+                    Next, explore Software Configuration
+                    Management (SCM), where you will learn
+                    how teams track, organize and control
+                    changes in software projects.
+                </div>
+
+                <div class="learning-actions">
+
+                    <a class="learning-button"
+                       href="{{ url_for('lessons') }}">
+                        Back to Learning Modules
+                    </a>
+
+                </div>
+
+            </section>
+
+        </article>
 
     </div>
+
 </div>
+
+<!-- LESSON NAVIGATION AND PROGRESS -->
+<script src="{{ url_for('static', filename='lesson-detail.js') }}"
+        defer></script>
+
+<!-- RANDOMIZED EIGHT-QUESTION QUIZ -->
+<script src="{{ url_for('static', filename='module-quiz.js') }}"
+        defer></script>
+
 {% endblock %}

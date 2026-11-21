@@ -1,0 +1,474 @@
+
+/* DevTrack detailed learning pages */
+/* This file does not change the homepage. */
+
+.learning-page {
+  width: min(1180px, 94%);
+  margin: 35px auto 70px;
+  color: #e8edff;
+}
+
+.learning-hero {
+  background: linear-gradient(135deg, #102d3c, #0d142b 70%);
+  border: 1px solid #263451;
+  border-radius: 22px;
+  padding: 36px;
+  margin-bottom: 25px;
+}
+
+.learning-label {
+  color: #35e0d0;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.learning-hero h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin: 12px 0;
+}
+
+.learning-hero p {
+  max-width: 750px;
+}
+
+.learning-layout {
+  display: grid;
+  grid-template-columns: 245px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.learning-sidebar {
+  position: sticky;
+  top: 20px;
+  background: #0d142b;
+  border: 1px solid #263451;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.learning-sidebar h3 {
+  color: #35e0d0;
+  margin-bottom: 15px;
+}
+
+.learning-sidebar a {
+  display: block;
+  color: #b6c4dd;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+.learning-sidebar a:hover,
+.learning-sidebar a.active {
+  color: #35e0d0;
+  background: #142b3c;
+}
+
+.learning-content {
+  min-width: 0;
+}
+
+.learning-section {
+  background: #0d142b;
+  border: 1px solid #263451;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 24px;
+  scroll-margin-top: 25px;
+}
+
+.learning-section h2 {
+  color: #35e0d0;
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+
+.learning-section h3 {
+  color: #e8edff;
+  margin-top: 20px;
+}
+
+.learning-section p,
+.learning-section li {
+  color: #b6c4dd;
+  line-height: 1.85;
+}
+
+.learning-section ul,
+.learning-section ol {
+  padding-left: 24px;
+  margin-bottom: 18px;
+}
+
+.learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.learning-tile {
+  background: #111c36;
+  border: 1px solid #263451;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.learning-tile h3 {
+  color: #35e0d0;
+  margin-top: 0;
+}
+
+.learning-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.learning-flow span {
+  background: #12313a;
+  color: #35e0d0;
+  border: 1px solid #286c72;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-weight: bold;
+}
+
+.learning-flow b {
+  color: #35e0d0;
+}
+
+.learning-code {
+  background: #070b19;
+  border: 1px solid #263451;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 18px 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #7cf5c8;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.learning-note {
+  background: #112b35;
+  border-left: 4px solid #35e0d0;
+  padding: 17px;
+  border-radius: 8px;
+  margin: 18px 0;
+  color: #e8edff;
+}
+
+.learning-details {
+  border: 1px solid #263451;
+  border-radius: 12px;
+  margin: 12px 0;
+  padding: 16px;
+  background: #111c36;
+}
+
+.learning-details summary {
+  cursor: pointer;
+  color: #35e0d0;
+  font-weight: bold;
+}
+
+.learning-details p {
+  margin-top: 14px;
+}
+
+.learning-progress {
+  height: 9px;
+  background: #263451;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+.learning-progress-fill {
+  height: 100%;
+  width: 0;
+  background: #35e0d0;
+  transition: width .3s ease;
+}
+
+.learning-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.learning-button {
+  border: 0;
+  border-radius: 10px;
+  background: #35e0d0;
+  color: #07111f;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.learning-button:hover {
+  background: #ffffff;
+}
+
+.learning-check-result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.learning-question {
+  background: #111c36;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.learning-question label {
+  display: block;
+  margin: 12px 0;
+  color: #e8edff;
+  cursor: pointer;
+}
+
+.learning-question input {
+  margin-right: 8px;
+}
+
+.learning-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+}
+
+.learning-table th,
+.learning-table td {
+  padding: 12px;
+  border: 1px solid #263451;
+  text-align: left;
+  color: #b6c4dd;
+}
+
+.learning-table th {
+  background: #12313a;
+  color: #35e0d0;
+}
+
+@media (max-width: 800px) {
+  .learning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-sidebar {
+    position: static;
+  }
+
+  .learning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-hero,
+  .learning-section {
+    padding: 20px;
+  }
+
+  .learning-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* DevTrack Module Knowledge Challenge */
+
+.module-quiz {
+  background: #101b34;
+  border: 1px solid #263451;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.module-quiz [hidden] {
+  display: none !important;
+}
+
+.module-quiz-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #35e0d0;
+  font-weight: bold;
+}
+
+.module-quiz #mq-question {
+  color: #e8edff;
+  margin: 25px 0 18px;
+}
+
+.mq-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 10px 0;
+  padding: 15px 18px;
+  background: #17233f;
+  color: #e8edff;
+  border: 1px solid #354361;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.mq-option:hover:not(:disabled) {
+  background: #203450;
+  border-color: #35e0d0;
+}
+
+.mq-option.selected {
+  background: #174047;
+  border: 2px solid #35e0d0;
+}
+
+.mq-option.correct {
+  background: #16432e;
+  border-color: #4ade80;
+}
+
+.mq-option.incorrect {
+  background: #4a202d;
+  border-color: #fb7185;
+}
+
+.mq-option:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+#mq-feedback {
+  margin-top: 16px;
+  line-height: 1.7;
+}
+
+#mq-result {
+  padding: 22px 0;
+}
+
+#mq-final-score {
+  font-size: 32px;
+  color: #35e0d0;
+}
+/* SCM quiz visibility and answer states */
+
+#scm-module-quiz [hidden] {
+    display: none !important;
+}
+
+#scm-module-quiz .mq-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 16px 20px;
+    border: 1px solid #334465;
+    border-radius: 12px;
+    background: #192542;
+    color: #e6edff;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+#scm-module-quiz .mq-option:hover:not(:disabled) {
+    border-color: #36d9d0;
+}
+
+#scm-module-quiz .mq-option.selected {
+    border-color: #36d9d0;
+    background: #173b4a;
+}
+
+#scm-module-quiz .mq-option.correct {
+    border-color: #42d89a;
+    background: #174b40;
+}
+
+#scm-module-quiz .mq-option.incorrect {
+    border-color: #f08080;
+    background: #522b3c;
+}
+
+#scm-module-quiz .mq-option:disabled {
+    cursor: default;
+}
+
+#scm-module-quiz .module-quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    color: #36d9d0;
+    font-weight: 700;
+}
+/* Module 03 Git quiz */
+
+#git-module-quiz [hidden] {
+    display: none !important;
+}
+
+#git-module-quiz .module-quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    color: #36d9d0;
+    font-weight: 700;
+}
+
+#git-module-quiz .mq-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 16px 20px;
+    border: 1px solid #334465;
+    border-radius: 12px;
+    background: #192542;
+    color: #e6edff;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+#git-module-quiz .mq-option:hover:not(:disabled) {
+    border-color: #36d9d0;
+}
+
+#git-module-quiz .mq-option.selected {
+    border-color: #36d9d0;
+    background: #173b4a;
+}
+
+#git-module-quiz .mq-option.correct {
+    border-color: #42d89a;
+    background: #174b40;
+}
+
+#git-module-quiz .mq-option.incorrect {
+    border-color: #f08080;
+    background: #522b3c;
+}
+
+#git-module-quiz .mq-option:disabled {
+    cursor: default;
+}
