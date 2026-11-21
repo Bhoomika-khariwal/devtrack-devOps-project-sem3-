@@ -27,6 +27,10 @@ def scm_basics():
 def quiz():
     return render_template("quiz.html")
 
+@app.route("/lessons/git-github")
+def git_github():
+    return render_template("git_github.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

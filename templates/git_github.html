@@ -1,0 +1,498 @@
+
+{% extends "base.html" %}
+{% block title %}DevTrack | Git and GitHub{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
+
+<div class="learning-page">
+  <div class="learning-hero">
+    <p class="learning-label">DEVTRACK ACADEMY · MODULE 03</p>
+    <h1>Git & GitHub Masterclass</h1>
+    <p>Learn version control step by step, from your first Git command to collaborative development, pull requests, merging and troubleshooting.</p>
+    <p id="learning-progress-text">0% topics visited</p>
+    <div class="learning-progress">
+      <div id="learning-progress-fill" class="learning-progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="learning-layout">
+    <aside class="learning-sidebar">
+      <h3>Learning Contents</h3>
+      <a href="#intro">01. Git and GitHub</a>
+      <a href="#setup">02. Installation and Setup</a>
+      <a href="#architecture">03. Git Architecture</a>
+      <a href="#repository">04. Repository Creation</a>
+      <a href="#commits">05. Staging and Commits</a>
+      <a href="#branches">06. Branching</a>
+      <a href="#merging">07. Merging and Conflicts</a>
+      <a href="#remotes">08. Remote Repositories</a>
+      <a href="#collaboration">09. GitHub Collaboration</a>
+      <a href="#undo">10. Undoing Changes</a>
+      <a href="#advanced">11. Advanced Git</a>
+      <a href="#platforms">12. GitHub vs GitLab</a>
+      <a href="#simulator">13. Command Simulator</a>
+      <a href="#practice">14. Knowledge Challenge</a>
+      <a href="#summary">15. Summary</a>
+    </aside>
+
+    <article class="learning-content">
+
+      <section id="intro" class="learning-section">
+        <h2>1. Introduction to Git and GitHub</h2>
+        <p><strong>Git</strong> is a distributed version control system. It records changes to project files and helps developers work on the same project.</p>
+        <p><strong>GitHub</strong> is an online platform for hosting Git repositories and collaborating through pull requests, issues, code reviews and automation.</p>
+
+        <div class="learning-flow">
+          <span>Write Code</span><b>→</b>
+          <span>Git Tracks Changes</span><b>→</b>
+          <span>GitHub Hosts Repository</span>
+        </div>
+
+        <h3>Why Git?</h3>
+        <ul>
+          <li>Keep a history of changes.</li>
+          <li>Work on separate features using branches.</li>
+          <li>Compare different versions of files.</li>
+          <li>Collaborate without sharing files manually.</li>
+          <li>Recover earlier working versions.</li>
+        </ul>
+
+        <div class="learning-note">
+          <strong>Example:</strong> A college team creates a website. One member builds the login page and another builds the dashboard. Git helps them track and combine their work.
+        </div>
+
+        <details class="learning-details">
+          <summary>Is Git the same as GitHub?</summary>
+          <p>No. Git is the version control software. GitHub is a hosting and collaboration service built around Git repositories. You can use Git locally without GitHub.</p>
+        </details>
+      </section>
+
+      <section id="setup" class="learning-section">
+        <h2>2. Installing and Configuring Git</h2>
+        <p>On Windows, install Git for Windows from the official Git website. Git Bash provides a terminal where you can execute Git commands.</p>
+
+        <h3>Check Installation</h3>
+        <pre class="learning-code">git --version</pre>
+        <p>Displays the installed Git version.</p>
+
+        <h3>Set Your Identity</h3>
+        <pre class="learning-code">git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</pre>
+        <p>Replace these placeholders with your own name and email. Git uses this information to identify the author of new commits.</p>
+
+        <h3>View Configuration</h3>
+        <pre class="learning-code">git config --global --list</pre>
+
+        <details class="learning-details">
+          <summary>What does --global mean?</summary>
+          <p>It sets the configuration for your Windows user account. A repository can override these settings using local configuration.</p>
+        </details>
+
+        <div class="learning-note">
+          Git Bash is a terminal, Git is the version control system, and GitHub is a web platform. These are three different things.
+        </div>
+      </section>
+
+      <section id="architecture" class="learning-section">
+        <h2>3. Git Architecture and Three Areas</h2>
+        <p>Understanding Git's three main areas makes commands such as add, commit and restore much easier.</p>
+
+        <div class="learning-flow">
+          <span>Working Directory</span><b>git add →</b>
+          <span>Staging Area</span><b>git commit →</b>
+          <span>Local Repository</span>
+        </div>
+
+        <div class="learning-grid">
+          <div class="learning-tile">
+            <h3>Working Directory</h3>
+            <p>The files you currently create or edit in your project folder.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Staging Area</h3>
+            <p>A preparation area where you choose changes for the next commit.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Local Repository</h3>
+            <p>The Git database that stores commits and repository history.</p>
+          </div>
+        </div>
+
+        <h3>Example</h3>
+        <pre class="learning-code">git status
+git add index.html
+git commit -m "Create homepage"</pre>
+
+        <details class="learning-details">
+          <summary>What is the .git folder?</summary>
+          <p>The hidden .git directory stores Git's internal repository data, including objects, references and configuration. Do not manually edit its contents during normal development.</p>
+        </details>
+      </section>
+
+      <section id="repository" class="learning-section">
+        <h2>4. Creating a Git Repository</h2>
+        <p>A repository is a project tracked by Git. You can initialize a new repository or clone an existing one.</p>
+
+        <h3>Initialize a New Project</h3>
+        <pre class="learning-code">mkdir git-practice
+cd git-practice
+git init
+git status</pre>
+
+        <p><code>git init</code> creates the Git repository. <code>git status</code> displays the current branch and file state.</p>
+
+        <h3>Clone an Existing Project</h3>
+        <pre class="learning-code">git clone https://github.com/OWNER/REPOSITORY.git</pre>
+        <p>Replace OWNER and REPOSITORY with a real repository URL. Cloning downloads the repository and its history.</p>
+
+        <h3>Useful Files</h3>
+        <ul>
+          <li><code>README.md</code> explains the project.</li>
+          <li><code>.gitignore</code> lists intentionally untracked files.</li>
+          <li><code>.github/workflows/</code> can store GitHub Actions workflows.</li>
+        </ul>
+
+        <div class="learning-note">Practice repository commands in a separate sample folder, not inside your active DevTrack repository.</div>
+      </section>
+
+      <section id="commits" class="learning-section">
+        <h2>5. Staging, Commits and History</h2>
+        <p>A commit records a snapshot of staged changes. Good commit messages explain what changed.</p>
+
+        <div class="learning-flow">
+          <span>Modify File</span><b>→</b>
+          <span>Stage Changes</span><b>→</b>
+          <span>Commit</span><b>→</b>
+          <span>Inspect History</span>
+        </div>
+
+        <h3>Common Commands</h3>
+        <pre class="learning-code">git status
+git add index.html
+git diff
+git diff --staged
+git commit -m "Add homepage"
+git log --oneline
+git show HEAD</pre>
+
+        <table class="learning-table">
+          <tr><th>Command</th><th>Purpose</th></tr>
+          <tr><td>git status</td><td>Check tracked, modified and staged files.</td></tr>
+          <tr><td>git add</td><td>Stage selected changes.</td></tr>
+          <tr><td>git diff</td><td>View unstaged changes.</td></tr>
+          <tr><td>git diff --staged</td><td>View staged changes.</td></tr>
+          <tr><td>git commit</td><td>Record staged changes.</td></tr>
+          <tr><td>git log</td><td>Inspect commit history.</td></tr>
+        </table>
+
+        <details class="learning-details">
+          <summary>Does git add upload files to GitHub?</summary>
+          <p>No. git add only updates the local staging area. git commit saves locally. git push transfers commits to a remote repository.</p>
+        </details>
+      </section>
+
+      <section id="branches" class="learning-section">
+        <h2>6. Branching and Switching</h2>
+        <p>A branch is a movable reference to a line of commits. Teams commonly use branches to develop features separately.</p>
+
+        <div class="learning-flow">
+          <span>main</span><b>→</b>
+          <span>feature-login</span><b>→</b>
+          <span>Review</span><b>→</b>
+          <span>Merge</span>
+        </div>
+
+        <h3>Create a Feature Branch</h3>
+        <pre class="learning-code">git switch -c feature-login
+git branch
+git status</pre>
+
+        <h3>Switch to an Existing Branch</h3>
+        <pre class="learning-code">git switch main</pre>
+
+        <h3>View All Branches</h3>
+        <pre class="learning-code">git branch -a</pre>
+
+        <details class="learning-details">
+          <summary>git switch -c vs git checkout -b</summary>
+          <p>Both can create and switch to a new branch. git switch was introduced to provide a clearer command for branch switching.</p>
+        </details>
+
+        <div class="learning-note">A feature branch allows you to work without immediately changing the main branch. Branches are not complete duplicate project folders.</div>
+      </section>
+
+      <section id="merging" class="learning-section">
+        <h2>7. Merging and Merge Conflicts</h2>
+        <p>Merging integrates changes from one branch into another.</p>
+
+        <h3>Basic Merge</h3>
+        <pre class="learning-code">git switch main
+git merge feature-login</pre>
+
+        <h3>Types of Merge</h3>
+        <div class="learning-grid">
+          <div class="learning-tile">
+            <h3>Fast-forward</h3>
+            <p>Git advances the branch pointer when no divergent commits need combining.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Three-way Merge</h3>
+            <p>Git combines divergent histories using their common ancestor.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Squash Merge</h3>
+            <p>Combines changes into a single new commit rather than preserving every feature commit on the target branch.</p>
+          </div>
+        </div>
+
+        <h3>What Is a Merge Conflict?</h3>
+        <p>A conflict occurs when Git cannot automatically decide how to combine incompatible changes.</p>
+
+        <div class="learning-flow">
+          <span>Conflict Detected</span><b>→</b>
+          <span>Review Changes</span><b>→</b>
+          <span>Edit File</span><b>→</b>
+          <span>Stage Resolution</span>
+        </div>
+
+        <details class="learning-details">
+          <summary>How do I complete a conflicted merge?</summary>
+          <p>Open the conflicting file, resolve the differences, test the result, stage the resolved file with git add, and complete the merge with git commit or git merge --continue as appropriate.</p>
+        </details>
+
+        <div class="learning-note">Never resolve conflicts by blindly deleting another contributor's changes. Review both versions first.</div>
+      </section>
+
+      <section id="remotes" class="learning-section">
+        <h2>8. Remote Repositories: Clone, Fetch, Pull and Push</h2>
+        <p>A remote is another repository location. Teams often use GitHub as their shared remote.</p>
+
+        <div class="learning-flow">
+          <span>Local Repository</span><b>git push →</b>
+          <span>GitHub Remote</span>
+        </div>
+
+        <h3>Useful Commands</h3>
+        <pre class="learning-code">git remote -v
+git fetch origin
+git pull origin main
+git push -u origin feature-login</pre>
+
+        <table class="learning-table">
+          <tr><th>Command</th><th>What It Does</th></tr>
+          <tr><td>git clone</td><td>Creates a local repository copy.</td></tr>
+          <tr><td>git fetch</td><td>Downloads remote references and objects without automatically integrating them into your current branch.</td></tr>
+          <tr><td>git pull</td><td>Fetches and integrates remote changes.</td></tr>
+          <tr><td>git push</td><td>Uploads local commits to a remote.</td></tr>
+        </table>
+
+        <details class="learning-details">
+          <summary>What are origin and upstream?</summary>
+          <p>origin is the conventional name for a cloned repository's remote. upstream is often used for the original project when working with a fork. These are configurable names, not special Git commands.</p>
+        </details>
+
+        <div class="learning-note">Before pushing shared work, check your current branch and repository status. Do not use force push unless you understand the consequences.</div>
+      </section>
+
+      <section id="collaboration" class="learning-section">
+        <h2>9. GitHub Collaboration and Pull Requests</h2>
+        <p>GitHub provides tools for reviewing and integrating Git changes.</p>
+
+        <h3>Typical Collaboration Workflow</h3>
+        <div class="learning-flow">
+          <span>Create Branch</span><b>→</b>
+          <span>Commit</span><b>→</b>
+          <span>Push</span><b>→</b>
+          <span>Pull Request</span><b>→</b>
+          <span>Review and Merge</span>
+        </div>
+
+        <h3>Important GitHub Features</h3>
+        <ul>
+          <li><strong>Pull Request:</strong> Propose changes for review and integration.</li>
+          <li><strong>Issues:</strong> Track tasks, bugs and suggestions.</li>
+          <li><strong>Code Review:</strong> Discuss and approve changes.</li>
+          <li><strong>Actions:</strong> Automate builds, tests and other workflows.</li>
+          <li><strong>Branch Protection:</strong> Enforce rules before merging.</li>
+        </ul>
+
+        <details class="learning-details">
+          <summary>Pull request vs git pull</summary>
+          <p>A pull request is a collaboration feature on platforms such as GitHub. git pull is a Git command that fetches and integrates changes from a remote.</p>
+        </details>
+
+        <details class="learning-details">
+          <summary>Fork vs clone</summary>
+          <p>A fork is a separate repository created under another account or namespace on a hosting platform. A clone is a local copy of a Git repository.</p>
+        </details>
+      </section>
+
+      <section id="undo" class="learning-section">
+        <h2>10. Undoing Changes: Restore, Reset, Revert and Stash</h2>
+        <p>Git provides different tools for different recovery situations. Choosing the correct command helps protect your work.</p>
+
+        <table class="learning-table">
+          <tr><th>Command</th><th>Purpose</th></tr>
+          <tr><td>git restore</td><td>Restore file content from a selected source.</td></tr>
+          <tr><td>git restore --staged</td><td>Remove changes from the staging area.</td></tr>
+          <tr><td>git reset</td><td>Move HEAD and optionally update the index or working tree.</td></tr>
+          <tr><td>git revert</td><td>Create a new commit that reverses an earlier commit.</td></tr>
+          <tr><td>git stash</td><td>Temporarily save certain uncommitted changes.</td></tr>
+        </table>
+
+        <h3>Safe Inspection Commands</h3>
+        <pre class="learning-code">git status
+git log --oneline
+git diff
+git stash list</pre>
+
+        <h3>Unstage a File</h3>
+        <pre class="learning-code">git restore --staged index.html</pre>
+
+        <h3>Revert a Commit</h3>
+        <pre class="learning-code">git revert COMMIT_HASH</pre>
+        <p>Replace COMMIT_HASH with the commit you want to reverse. Revert is commonly preferred for undoing changes already shared with collaborators.</p>
+
+        <details class="learning-details">
+          <summary>Why is git reset --hard risky?</summary>
+          <p>It can discard uncommitted changes in tracked files. Avoid using it on important work without understanding exactly what will be lost.</p>
+        </details>
+      </section>
+
+      <section id="advanced" class="learning-section">
+        <h2>11. Advanced Git Concepts</h2>
+
+        <details class="learning-details">
+          <summary>Git Rebase</summary>
+          <p>Rebase replays commits onto a different base, often creating a more linear history. Because it rewrites commit identities, coordinate carefully before rebasing shared branches.</p>
+        </details>
+
+        <details class="learning-details">
+          <summary>Cherry-pick</summary>
+          <p>Cherry-pick applies the change introduced by a selected commit onto your current branch, creating a new commit.</p>
+          <pre class="learning-code">git cherry-pick COMMIT_HASH</pre>
+        </details>
+
+        <details class="learning-details">
+          <summary>Git Tags</summary>
+          <p>Tags identify specific commits, often for releases.</p>
+          <pre class="learning-code">git tag v1.0.0
+git tag --list</pre>
+        </details>
+
+        <details class="learning-details">
+          <summary>Git Hooks</summary>
+          <p>Hooks are scripts that Git can run during certain events, such as before committing. They can support local validation and automation.</p>
+        </details>
+
+        <details class="learning-details">
+          <summary>Submodules and Subtrees</summary>
+          <p>Submodules reference another repository at a specific commit. Subtrees allow another project's files to be incorporated and managed within a repository.</p>
+        </details>
+
+        <h3>Visualize Branch History</h3>
+        <pre class="learning-code">git log --oneline --graph --all --decorate</pre>
+      </section>
+
+      <section id="platforms" class="learning-section">
+        <h2>12. GitHub vs GitLab</h2>
+        <p>Both platforms host Git repositories and provide collaboration features. Their interfaces and built-in tooling differ.</p>
+
+        <table class="learning-table">
+          <tr><th>Feature</th><th>GitHub</th><th>GitLab</th></tr>
+          <tr><td>Code Hosting</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Review Feature</td><td>Pull Requests</td><td>Merge Requests</td></tr>
+          <tr><td>CI/CD</td><td>GitHub Actions</td><td>GitLab CI/CD</td></tr>
+          <tr><td>Issue Tracking</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Git Commands</td><td>Standard Git</td><td>Standard Git</td></tr>
+        </table>
+
+        <div class="learning-note">Commands such as git add, git commit, git branch and git push work with both GitHub and GitLab repositories. The remote repository URL is what changes.</div>
+      </section>
+
+      <section id="simulator" class="learning-section">
+        <h2>13. Interactive Git Command Simulator</h2>
+        <p>Practice common Git commands safely in your browser. This is a learning simulation and does not change real repository files.</p>
+
+        <div class="learning-note">
+          Try this sequence: <code>git init</code>, <code>git status</code>, <code>git add .</code>, <code>git commit -m "First commit"</code>, <code>git switch -c feature-login</code>.
+        </div>
+
+        <div class="learning-actions">
+          <button id="git-sim-reset" type="button" class="learning-button">Reset Simulation</button>
+        </div>
+
+        <pre id="git-sim-output" class="learning-code" aria-live="polite">DevTrack Git Simulator
+Type a supported command below to begin.</pre>
+
+        <form id="git-sim-form" class="learning-actions">
+          <label for="git-sim-input">Git command:</label>
+          <input id="git-sim-input" type="text" placeholder='git status' autocomplete="off" style="flex:1;min-width:210px;padding:12px;border-radius:10px;border:1px solid #334465;background:#111c34;color:#e6edff;font:inherit;">
+          <button type="submit" class="learning-button">Run Command</button>
+        </form>
+
+        <details class="learning-details">
+          <summary>Supported simulation commands</summary>
+          <p><code>git init</code>, <code>git status</code>, <code>git add .</code>, <code>git commit -m "message"</code>, <code>git branch</code>, <code>git switch -c NAME</code>, <code>git switch NAME</code>, <code>git log --oneline</code>, <code>git help</code>.</p>
+        </details>
+      </section>
+
+      <section id="practice" class="learning-section">
+        <h2>14. Interactive Git Knowledge Challenge</h2>
+        <p>Test your knowledge with 8 randomly selected questions from a bank of 20. Answers and questions are shuffled on each attempt.</p>
+
+        <div id="git-module-quiz" class="module-quiz">
+          <div class="module-quiz-top">
+            <span id="git-counter">Question 1 of 8</span>
+            <span id="git-score">Score: 0</span>
+          </div>
+          <div class="learning-progress">
+            <div id="git-progress" class="learning-progress-fill"></div>
+          </div>
+
+          <div id="git-question-panel">
+            <h3 id="git-question">Loading question...</h3>
+            <div id="git-options" class="mq-options"></div>
+            <p id="git-feedback" class="learning-check-result" aria-live="polite"></p>
+            <div class="learning-actions">
+              <button id="git-submit" type="button" class="learning-button">Check Answer</button>
+              <button id="git-next" type="button" class="learning-button" hidden>Next Question →</button>
+            </div>
+          </div>
+
+          <div id="git-result" hidden>
+            <h2>Challenge Completed!</h2>
+            <h3 id="git-final-score"></h3>
+            <p id="git-result-message"></p>
+            <button id="git-retry" type="button" class="learning-button">Try Different Questions</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="summary" class="learning-section">
+        <h2>15. Module Summary</h2>
+        <p>Congratulations! You have explored the essential concepts of Git and GitHub.</p>
+        <ul>
+          <li>Git installation and configuration.</li>
+          <li>Working directory, staging area and repository.</li>
+          <li>Repositories, commits and history.</li>
+          <li>Branching, merging and conflict resolution.</li>
+          <li>Remote repositories and collaboration.</li>
+          <li>Pull requests and GitHub workflows.</li>
+          <li>Undo operations and advanced Git features.</li>
+          <li>Git command practice through simulation.</li>
+        </ul>
+        <div class="learning-note">Next up: CI/CD pipelines, GitHub Actions and automated software delivery.</div>
+        <div class="learning-actions">
+          <a class="learning-button" href="{{ url_for('lessons') }}">Back to Learning Modules</a>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='lesson-detail.js') }}" defer></script>
+<script src="{{ url_for('static', filename='git-github-quiz.js') }}" defer></script>
+{% endblock %}

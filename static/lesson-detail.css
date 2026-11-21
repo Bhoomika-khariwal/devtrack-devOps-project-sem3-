@@ -368,3 +368,107 @@
   font-size: 32px;
   color: #35e0d0;
 }
+/* SCM quiz visibility and answer states */
+
+#scm-module-quiz [hidden] {
+    display: none !important;
+}
+
+#scm-module-quiz .mq-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 16px 20px;
+    border: 1px solid #334465;
+    border-radius: 12px;
+    background: #192542;
+    color: #e6edff;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+#scm-module-quiz .mq-option:hover:not(:disabled) {
+    border-color: #36d9d0;
+}
+
+#scm-module-quiz .mq-option.selected {
+    border-color: #36d9d0;
+    background: #173b4a;
+}
+
+#scm-module-quiz .mq-option.correct {
+    border-color: #42d89a;
+    background: #174b40;
+}
+
+#scm-module-quiz .mq-option.incorrect {
+    border-color: #f08080;
+    background: #522b3c;
+}
+
+#scm-module-quiz .mq-option:disabled {
+    cursor: default;
+}
+
+#scm-module-quiz .module-quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    color: #36d9d0;
+    font-weight: 700;
+}
+/* Module 03 Git quiz */
+
+#git-module-quiz [hidden] {
+    display: none !important;
+}
+
+#git-module-quiz .module-quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    color: #36d9d0;
+    font-weight: 700;
+}
+
+#git-module-quiz .mq-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 16px 20px;
+    border: 1px solid #334465;
+    border-radius: 12px;
+    background: #192542;
+    color: #e6edff;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+#git-module-quiz .mq-option:hover:not(:disabled) {
+    border-color: #36d9d0;
+}
+
+#git-module-quiz .mq-option.selected {
+    border-color: #36d9d0;
+    background: #173b4a;
+}
+
+#git-module-quiz .mq-option.correct {
+    border-color: #42d89a;
+    background: #174b40;
+}
+
+#git-module-quiz .mq-option.incorrect {
+    border-color: #f08080;
+    background: #522b3c;
+}
+
+#git-module-quiz .mq-option:disabled {
+    cursor: default;
+}
