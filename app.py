@@ -31,6 +31,10 @@ def quiz():
 def git_github():
     return render_template("git_github.html")
 
+@app.route("/lessons/cicd")
+def cicd():
+    return render_template("cicd.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

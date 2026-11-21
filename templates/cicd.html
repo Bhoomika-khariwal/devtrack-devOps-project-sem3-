@@ -1,0 +1,642 @@
+
+{% extends "base.html" %}
+{% block title %}DevTrack | CI/CD and Automation{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
+
+<style>
+  #cicd-module-quiz [hidden], #pipeline-app [hidden] {
+    display: none !important;
+  }
+  .cicd-stage-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin: 22px 0;
+  }
+  .cicd-stage {
+    padding: 18px 8px;
+    text-align: center;
+    border: 1px solid #334465;
+    border-radius: 12px;
+    background: #192542;
+    color: #dbe8fa;
+    font-size: 14px;
+  }
+  .cicd-stage.running {
+    border-color: #42c9ef;
+    background: #19425c;
+  }
+  .cicd-stage.passed {
+    border-color: #42d89a;
+    background: #174b40;
+  }
+  .cicd-stage.failed {
+    border-color: #f08080;
+    background: #522b3c;
+  }
+  .cicd-stage.skipped {
+    opacity: .55;
+  }
+  .cicd-stage strong {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .cicd-stage small {
+    display: block;
+  }
+  #pipeline-log {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    min-height: 160px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  #cicd-module-quiz .module-quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    color: #36d9d0;
+    font-weight: bold;
+  }
+  #cicd-module-quiz .mq-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    background: #192542;
+    color: #e6edff;
+    border: 1px solid #334465;
+    border-radius: 11px;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+  }
+  #cicd-module-quiz .mq-option.selected {
+    background: #173b4a;
+    border-color: #36d9d0;
+  }
+  #cicd-module-quiz .mq-option.correct {
+    background: #174b40;
+    border-color: #42d89a;
+  }
+  #cicd-module-quiz .mq-option.incorrect {
+    background: #522b3c;
+    border-color: #f08080;
+  }
+  #cicd-module-quiz .mq-option:disabled {
+    cursor: default;
+  }
+  @media (max-width: 700px) {
+    .cicd-stage-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<div class="learning-page">
+
+  <div class="learning-hero">
+    <p class="learning-label">DEVTRACK ACADEMY · MODULE 04</p>
+    <h1>CI/CD & Automation</h1>
+    <p>
+      Learn how modern teams automate building, testing,
+      releasing and deploying software with CI/CD pipelines
+      and GitHub Actions.
+    </p>
+    <p id="learning-progress-text">0% topics visited</p>
+    <div class="learning-progress">
+      <div id="learning-progress-fill"
+           class="learning-progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="learning-layout">
+
+    <aside class="learning-sidebar">
+      <h3>Learning Contents</h3>
+      <a href="#intro">01. CI/CD Introduction</a>
+      <a href="#comparison">02. CI vs Delivery vs Deployment</a>
+      <a href="#pipeline">03. Pipeline Architecture</a>
+      <a href="#actions">04. GitHub Actions</a>
+      <a href="#yaml">05. YAML Workflow</a>
+      <a href="#triggers">06. Triggers and Runners</a>
+      <a href="#secrets">07. Secrets and Security</a>
+      <a href="#testing">08. Testing and Failures</a>
+      <a href="#deploy">09. Deployment</a>
+      <a href="#monitor">10. Monitoring</a>
+      <a href="#simulator">11. Pipeline Simulator</a>
+      <a href="#practice">12. Knowledge Challenge</a>
+      <a href="#summary">13. Summary</a>
+    </aside>
+
+    <article class="learning-content">
+
+      <section id="intro" class="learning-section">
+        <h2>1. Introduction to CI/CD</h2>
+        <p>
+          CI/CD is a set of practices that helps teams integrate,
+          test and deliver software changes frequently and reliably.
+          CI stands for Continuous Integration. CD can mean
+          Continuous Delivery or Continuous Deployment.
+        </p>
+        <div class="learning-flow">
+          <span>Code</span><b>→</b>
+          <span>Build</span><b>→</b>
+          <span>Test</span><b>→</b>
+          <span>Release</span><b>→</b>
+          <span>Deploy</span>
+        </div>
+        <h3>Why do teams use CI/CD?</h3>
+        <ul>
+          <li>Detect code problems earlier.</li>
+          <li>Reduce repetitive manual tasks.</li>
+          <li>Make testing consistent.</li>
+          <li>Provide faster feedback to developers.</li>
+          <li>Support frequent, reliable software releases.</li>
+        </ul>
+        <div class="learning-note">
+          Example: When a student pushes a change to GitHub,
+          an automated workflow checks the code and runs tests
+          before the team considers deploying it.
+        </div>
+      </section>
+
+      <section id="comparison" class="learning-section">
+        <h2>2. CI vs Continuous Delivery vs Continuous Deployment</h2>
+
+        <div class="learning-grid">
+          <div class="learning-tile">
+            <h3>Continuous Integration</h3>
+            <p>Integrate code frequently and automatically build and test it.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Continuous Delivery</h3>
+            <p>Keep tested software ready to release, often with manual production approval.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Continuous Deployment</h3>
+            <p>Automatically deploy changes that pass all required checks.</p>
+          </div>
+        </div>
+
+        <table class="learning-table">
+          <tr><th>Practice</th><th>Main Purpose</th></tr>
+          <tr><td>CI</td><td>Build and test integrated code.</td></tr>
+          <tr><td>Continuous Delivery</td><td>Prepare changes for reliable release.</td></tr>
+          <tr><td>Continuous Deployment</td><td>Automatically release approved changes after required checks.</td></tr>
+        </table>
+
+        <details class="learning-details">
+          <summary>Is Continuous Delivery the same as Deployment?</summary>
+          <p>
+            No. Continuous Delivery makes a release ready,
+            while Continuous Deployment automatically releases
+            changes after the pipeline's required checks pass.
+          </p>
+        </details>
+      </section>
+
+      <section id="pipeline" class="learning-section">
+        <h2>3. CI/CD Pipeline Architecture</h2>
+        <p>
+          A pipeline is an automated sequence of stages.
+          Each stage performs a particular task and reports
+          success or failure.
+        </p>
+
+        <div class="learning-flow">
+          <span>Git Push</span><b>→</b>
+          <span>Checkout</span><b>→</b>
+          <span>Build</span><b>→</b>
+          <span>Test</span><b>→</b>
+          <span>Deploy</span>
+        </div>
+
+        <details class="learning-details">
+          <summary>Checkout</summary>
+          <p>Retrieve the repository's code for the workflow to use.</p>
+        </details>
+        <details class="learning-details">
+          <summary>Build</summary>
+          <p>Install dependencies, compile code or prepare an application artifact.</p>
+        </details>
+        <details class="learning-details">
+          <summary>Test</summary>
+          <p>Run automated checks to verify expected behavior.</p>
+        </details>
+        <details class="learning-details">
+          <summary>Deploy</summary>
+          <p>Release the validated application to a target environment when permitted.</p>
+        </details>
+
+        <div class="learning-note">
+          A failed required test should normally prevent
+          the dependent deployment job from running.
+        </div>
+      </section>
+
+      <section id="actions" class="learning-section">
+        <h2>4. Introduction to GitHub Actions</h2>
+        <p>
+          GitHub Actions is GitHub's workflow automation platform.
+          It can run tests, builds, security checks and deployments
+          in response to repository events.
+        </p>
+
+        <h3>Important Terms</h3>
+        <table class="learning-table">
+          <tr><th>Term</th><th>Meaning</th></tr>
+          <tr><td>Workflow</td><td>Automation defined in a YAML file.</td></tr>
+          <tr><td>Event</td><td>An activity that can trigger a workflow.</td></tr>
+          <tr><td>Job</td><td>A collection of steps running on a runner.</td></tr>
+          <tr><td>Step</td><td>An individual action or shell command.</td></tr>
+          <tr><td>Runner</td><td>The machine executing the job.</td></tr>
+          <tr><td>Action</td><td>A reusable automation component.</td></tr>
+        </table>
+
+        <div class="learning-flow">
+          <span>GitHub Event</span><b>→</b>
+          <span>Workflow</span><b>→</b>
+          <span>Job</span><b>→</b>
+          <span>Steps</span>
+        </div>
+      </section>
+
+      <section id="yaml" class="learning-section">
+        <h2>5. Understanding YAML Workflow Files</h2>
+        <p>
+          GitHub Actions workflow files are stored in
+          <code>.github/workflows/</code> and use
+          <code>.yml</code> or <code>.yaml</code>.
+        </p>
+
+        <h3>Example: Python CI Workflow</h3>
+
+        <pre class="learning-code">name: Python CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        run: python -m pytest</pre>
+
+        <p>
+          This is an example workflow for a Python project
+          that has a <code>requirements.txt</code> file and
+          pytest-compatible tests. Adjust the dependencies
+          and commands for your own repository.
+        </p>
+
+        <details class="learning-details">
+          <summary>Why is YAML indentation important?</summary>
+          <p>
+            YAML uses indentation to represent structure.
+            Incorrect indentation can make a workflow invalid
+            or change how its settings are interpreted.
+          </p>
+        </details>
+
+        <details class="learning-details">
+          <summary>What does uses mean?</summary>
+          <p>
+            The <code>uses</code> keyword runs a reusable action,
+            while <code>run</code> executes a shell command.
+          </p>
+        </details>
+      </section>
+
+      <section id="triggers" class="learning-section">
+        <h2>6. Workflow Triggers and Runners</h2>
+        <p>
+          A workflow can start automatically when an event
+          occurs or manually when configured to allow it.
+        </p>
+
+        <div class="learning-grid">
+          <div class="learning-tile">
+            <h3>push</h3>
+            <p>Starts on matching repository push events.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>pull_request</h3>
+            <p>Runs on configured pull request events.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>workflow_dispatch</h3>
+            <p>Enables manual workflow execution.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>schedule</h3>
+            <p>Runs workflows on a configured schedule.</p>
+          </div>
+        </div>
+
+        <h3>Manual Trigger Example</h3>
+        <pre class="learning-code">on:
+  workflow_dispatch:</pre>
+
+        <h3>Runner Example</h3>
+        <pre class="learning-code">jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello from DevTrack"</pre>
+
+        <div class="learning-note">
+          GitHub-hosted runners provide managed execution
+          environments. Self-hosted runners are maintained
+          by the organization or developer.
+        </div>
+      </section>
+
+      <section id="secrets" class="learning-section">
+        <h2>7. GitHub Secrets and Pipeline Security</h2>
+        <p>
+          Applications sometimes need credentials to access
+          external services. These should not be hardcoded
+          into source code or workflow files.
+        </p>
+
+        <h3>Repository Secrets</h3>
+        <p>
+          In GitHub, repository administrators can configure
+          secrets under repository Settings → Secrets and
+          variables → Actions.
+        </p>
+
+        <h3>Example Secret Reference</h3>
+       <pre class="learning-code">env:
+  API_TOKEN: {% raw %}${{ secrets.API_TOKEN }}{% endraw %}</pre>
+
+        <h3>Good Security Practices</h3>
+        <ul>
+          <li>Never commit passwords or API tokens.</li>
+          <li>Give workflows only the permissions they need.</li>
+          <li>Protect deployment environments.</li>
+          <li>Review third-party actions before using them.</li>
+          <li>Do not print secret values into logs.</li>
+        </ul>
+
+        <div class="learning-note">
+          This page only explains how secret references work.
+          Never paste real credentials into a learning simulator.
+        </div>
+      </section>
+
+      <section id="testing" class="learning-section">
+        <h2>8. Automated Testing and Pipeline Failures</h2>
+        <p>
+          Automated tests help teams detect errors before
+          deployment. A pipeline may run unit tests,
+          integration tests and other checks.
+        </p>
+
+        <h3>Example Test Command</h3>
+        <pre class="learning-code">python -m pytest</pre>
+
+        <h3>When a Test Fails</h3>
+        <div class="learning-flow">
+          <span>Build Passes</span><b>→</b>
+          <span>Test Fails</span><b>→</b>
+          <span>Inspect Logs</span><b>→</b>
+          <span>Fix and Retry</span>
+        </div>
+
+        <p>
+          Developers should read the failed step's logs,
+          identify the cause, correct the code or test
+          configuration and rerun the workflow.
+        </p>
+
+        <details class="learning-details">
+          <summary>What if the build succeeds but tests fail?</summary>
+          <p>
+            The workflow is not successful overall.
+            Deployment jobs that depend on the successful
+            test job should not run.
+          </p>
+        </details>
+      </section>
+
+      <section id="deploy" class="learning-section">
+        <h2>9. Continuous Delivery and Deployment</h2>
+        <p>
+          Deployment moves an application version into
+          a target environment. Teams often use separate
+          development, staging and production environments.
+        </p>
+
+        <div class="learning-flow">
+          <span>Build</span><b>→</b>
+          <span>Test</span><b>→</b>
+          <span>Staging</span><b>→</b>
+          <span>Approval</span><b>→</b>
+          <span>Production</span>
+        </div>
+
+        <h3>Common Deployment Strategies</h3>
+        <ul>
+          <li><strong>Rolling:</strong> Update instances gradually.</li>
+          <li><strong>Blue-Green:</strong> Switch traffic between two environments.</li>
+          <li><strong>Canary:</strong> Release to a small group first.</li>
+          <li><strong>Rollback:</strong> Return to a previously working version.</li>
+        </ul>
+
+        <div class="learning-note">
+          Real deployment requires a configured target
+          environment and appropriate authorization.
+          The simulator below does not deploy real software.
+        </div>
+      </section>
+
+      <section id="monitor" class="learning-section">
+        <h2>10. Monitoring and Continuous Feedback</h2>
+        <p>
+          After deployment, teams monitor software to
+          detect problems and improve reliability.
+        </p>
+
+        <div class="learning-grid">
+          <div class="learning-tile">
+            <h3>Logs</h3>
+            <p>Records of application and system events.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Metrics</h3>
+            <p>Measurements such as latency and error rate.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Alerts</h3>
+            <p>Notifications when monitored conditions need attention.</p>
+          </div>
+          <div class="learning-tile">
+            <h3>Feedback</h3>
+            <p>Information used to improve future releases.</p>
+          </div>
+        </div>
+
+        <div class="learning-flow">
+          <span>Deploy</span><b>→</b>
+          <span>Monitor</span><b>→</b>
+          <span>Feedback</span><b>→</b>
+          <span>Improve</span>
+        </div>
+      </section>
+
+      <section id="simulator" class="learning-section">
+        <h2>11. Interactive CI/CD Pipeline Simulator</h2>
+        <p>
+          Run a simulated pipeline and observe how
+          build, test and deployment stages behave.
+          No actual GitHub workflow or server is used.
+        </p>
+
+        <div id="pipeline-app">
+          <h3>Choose a Scenario</h3>
+          <div class="learning-actions">
+            <button id="pipeline-success" type="button"
+                    class="learning-button">
+              Run Successful Pipeline
+            </button>
+            <button id="pipeline-failure" type="button"
+                    class="learning-button">
+              Simulate Test Failure
+            </button>
+            <button id="pipeline-reset" type="button"
+                    class="learning-button">
+              Reset
+            </button>
+          </div>
+
+          <div class="cicd-stage-grid">
+            <div class="cicd-stage" data-stage="0">
+              <strong>1. Checkout</strong>
+              <small>Waiting</small>
+            </div>
+            <div class="cicd-stage" data-stage="1">
+              <strong>2. Build</strong>
+              <small>Waiting</small>
+            </div>
+            <div class="cicd-stage" data-stage="2">
+              <strong>3. Test</strong>
+              <small>Waiting</small>
+            </div>
+            <div class="cicd-stage" data-stage="3">
+              <strong>4. Deploy</strong>
+              <small>Waiting</small>
+            </div>
+            <div class="cicd-stage" data-stage="4">
+              <strong>5. Monitor</strong>
+              <small>Waiting</small>
+            </div>
+          </div>
+
+          <p id="pipeline-status" aria-live="polite">
+            Ready to start.
+          </p>
+
+          <h3>Pipeline Execution Log</h3>
+          <pre id="pipeline-log" class="learning-code"
+               aria-live="polite">Waiting for a scenario...</pre>
+        </div>
+      </section>
+
+      <section id="practice" class="learning-section">
+        <h2>12. CI/CD Knowledge Challenge</h2>
+        <p>
+          Answer 8 randomized questions selected
+          from a bank of 20 CI/CD questions.
+        </p>
+
+        <div id="cicd-module-quiz" class="module-quiz">
+          <div class="module-quiz-top">
+            <span id="cicd-counter">Question 1 of 8</span>
+            <span id="cicd-score">Score: 0</span>
+          </div>
+
+          <div class="learning-progress">
+            <div id="cicd-progress"
+                 class="learning-progress-fill"></div>
+          </div>
+
+          <div id="cicd-question-panel">
+            <h3 id="cicd-question">Loading question...</h3>
+            <div id="cicd-options" class="mq-options"></div>
+            <p id="cicd-feedback"
+               class="learning-check-result"
+               aria-live="polite"></p>
+            <div class="learning-actions">
+              <button id="cicd-submit" type="button"
+                      class="learning-button">Check Answer</button>
+              <button id="cicd-next" type="button"
+                      class="learning-button" hidden>
+                Next Question →
+              </button>
+            </div>
+          </div>
+
+          <div id="cicd-result" hidden>
+            <h2>Challenge Completed!</h2>
+            <h3 id="cicd-final-score"></h3>
+            <p id="cicd-result-message"></p>
+            <button id="cicd-retry" type="button"
+                    class="learning-button">
+              Try Different Questions
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="summary" class="learning-section">
+        <h2>13. Module Summary</h2>
+        <p>Congratulations on completing the CI/CD module!</p>
+        <ul>
+          <li>CI, Continuous Delivery and Continuous Deployment.</li>
+          <li>Pipeline stages and automation.</li>
+          <li>GitHub Actions, jobs, steps and runners.</li>
+          <li>YAML workflows and event triggers.</li>
+          <li>Secrets and pipeline security.</li>
+          <li>Testing, failure handling and deployment.</li>
+          <li>Monitoring and continuous feedback.</li>
+        </ul>
+        <div class="learning-actions">
+          <a class="learning-button"
+             href="{{ url_for('lessons') }}">
+            Back to Learning Modules
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='lesson-detail.js') }}" defer></script>
+<script src="{{ url_for('static', filename='cicd-module.js') }}" defer></script>
+{% endblock %}
