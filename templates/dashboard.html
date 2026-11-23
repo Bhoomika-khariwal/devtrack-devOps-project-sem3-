@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | DevTrack</title>
+</head>
+<body>
+
+    <h1>Welcome, {{ username }}!</h1>
+    <form action="{{ url_for('logout') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit">Log out</button>
+    </form>
+
+    <h2>Your DevTrack Dashboard</h2>
+
+    <p>You are successfully logged in.</p>
+
+    <p>Start learning DevOps and tracking your progress!</p>
+
+    <form method="POST" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token"
+               value="{{ csrf_token() }}">
+        <button type="submit">Logout</button>
+    </form>
+
+</body>
+</html>
+
+
