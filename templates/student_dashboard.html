@@ -1,0 +1,116 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='student-dashboard.css') }}">
+
+<main class="student-dashboard">
+
+  <header class="sd-header">
+    <div>
+      <p class="sd-eyebrow">DEVTRACK / STUDENT PROGRESS</p>
+      <h1>My Learning Dashboard</h1>
+      <p class="sd-subtitle">
+        Track your DevOps learning journey,
+        earn XP and unlock achievements!
+      </p>
+    </div>
+
+    <span class="sd-demo-label">Demo Data</span>
+  </header>
+
+  <!-- STUDENT STATISTICS -->
+
+  <section class="sd-stats">
+
+    <div class="sd-card sd-stat-card">
+      <div class="sd-stat-icon">⚡</div>
+      <div class="sd-value" id="xp">0</div>
+      <p class="sd-label">Total XP</p>
+    </div>
+
+    <div class="sd-card sd-stat-card">
+      <div class="sd-stat-icon">🎯</div>
+      <div class="sd-value" id="level">1</div>
+      <p class="sd-label">Current Level</p>
+    </div>
+
+    <div class="sd-card sd-stat-card">
+      <div class="sd-stat-icon">📚</div>
+      <div class="sd-value" id="completed">0/4</div>
+      <p class="sd-label">Modules Completed</p>
+    </div>
+
+    <div class="sd-card sd-stat-card">
+      <div class="sd-stat-icon">📈</div>
+      <div class="sd-value" id="overall">0%</div>
+      <p class="sd-label">Overall Progress</p>
+    </div>
+
+  </section>
+
+  <!-- LEVEL PROGRESS -->
+
+  <section class="sd-card sd-level-section">
+
+    <div class="sd-section-top">
+      <h2>Level Progress</h2>
+      <span id="levelText">Level 1</span>
+    </div>
+
+    <p class="sd-muted" id="nextLevelText">
+      Loading XP progress...
+    </p>
+
+    <div class="sd-progress">
+      <div class="sd-progress-fill"
+           id="levelProgress"
+           style="width: 0%">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MODULE PROGRESS -->
+
+  <section class="sd-section">
+
+    <div class="sd-section-top">
+      <h2>Module Progress</h2>
+      <span class="sd-muted">4 Learning Modules</span>
+    </div>
+
+    <div class="sd-module-grid" id="moduleList">
+    </div>
+
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+
+  <section class="sd-section">
+
+    <div class="sd-section-top">
+      <h2>Achievements & Badges</h2>
+      <span class="sd-muted" id="badgeCount">
+        0 Badges Unlocked
+      </span>
+    </div>
+
+    <div class="sd-badge-grid" id="badgeList">
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <div class="sd-footer">
+    Keep learning, practicing and improving your DevOps skills!
+  </div>
+
+</main>
+
+<script src="{{ url_for('static', filename='student-dashboard.js') }}"></script>
+
+{% endblock %}
