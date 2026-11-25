@@ -1,0 +1,22 @@
+.account-wrap, .account-wrap * { box-sizing: border-box; }
+.account-wrap { max-width: 560px; margin: 48px auto 80px; padding: 0 18px; font-family: Arial, sans-serif; color: #f1f5f9; }
+.account-card { background: #17243b; border: 1px solid #294155; border-radius: 18px; padding: 34px; }
+.account-eyebrow { color: #2dd4bf; letter-spacing: 2px; font-size: 12px; font-weight: bold; }
+.account-card h1 { color: #2dd4bf; margin: 15px 0; font-size: 32px; }
+.account-subtitle, .account-switch { color: #b6c7d9; }
+.account-card form { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.account-card label { color: #d9e5f0; font-size: 14px; }
+.account-card input:not([type="hidden"]) { width: 100%; background: #0b1426; border: 1px solid #48617b; border-radius: 9px; padding: 12px; color: white; font: inherit; }
+.account-card input:focus-visible, .account-btn:focus-visible { outline: 3px solid #5eead4; outline-offset: 2px; }
+.account-btn { text-align: center; display: inline-block; background: #2dd4bf; color: #092333; padding: 13px 20px; border: 0; border-radius: 9px; font-weight: bold; text-decoration: none; cursor: pointer; font: inherit; }
+.account-btn:hover { background: #5eead4; }
+.account-secondary { background: #35536b; color: white; }
+.account-secondary:hover { background: #48617b; }
+.account-switch { margin-top: 22px; }
+.account-switch a { color: #5eead4; }
+.account-flash { padding: 12px; border-radius: 8px; margin: 16px 0; }
+.account-error { color: #ffb3b3; background: #40212c; }
+.account-success { color: #9ff4d7; background: #153f37; }
+.account-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+.account-actions form { margin: 0; }
+@media(max-width: 600px) { .account-card { padding: 22px; } }

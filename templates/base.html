@@ -15,8 +15,23 @@
       DevTrack
     </a>
     <ul class="nav-links">
-      <li><a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' }}">Home</a></li>
-      <li><a href="{{ url_for('lessons') }}" class="{{ 'active' if request.endpoint == 'lessons' }}">Learning modules</a></li>
+        <li><a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' }}">Home</a></li>
+
+        {% if not current_user.is_authenticated %}
+          <li><a href="{{ url_for('login') }}">Log in</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
+
+        <li><a href="{{ url_for('lessons') }}" class="{{ 'active' if request.endpoint == 'lessons' }}">Learning modules</a></li>
+
+          {% if current_user.is_authenticated %}
+      <li>
+        <form action="{{ url_for('logout') }}" method="post" class="nav-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="nav-btn">Log out ({{ current_user.username }})</button>
+      </form>
+      </li>
+      {% endif %}
     </ul>
   </header>
 

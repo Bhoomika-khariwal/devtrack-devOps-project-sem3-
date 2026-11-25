@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}DevTrack | Account{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='account-auth.css') }}">
+<main class="account-wrap">
+  <section class="account-card">
+    <p class="account-eyebrow">DEVTRACK / STUDENT ACCESS</p>
+    {% if mode == 'register' %}
+      <h1>Create your account</h1>
+      <p class="account-subtitle">Register to begin your DevOps learning journey.</p>
+    {% elif mode == 'login' %}
+      <h1>Student Login</h1>
+      <p class="account-subtitle">Sign in to your DevTrack account.</p>
+    {% else %}
+      <h1>Welcome, {{ username }}!</h1>
+      <p class="account-subtitle">You are signed in. The learning modules are ready.</p>
+    {% endif %}
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <p class="account-flash {{ 'account-error' if category == 'error' else 'account-success' }}" role="status">{{ message }}</p>
+    {% endfor %}
+
+    {% if mode == 'register' %}
+      <form method="post" action="{{ url_for('account.register') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_value }}">
+        <label for="username">Username</label>
+        <input id="username" name="username" minlength="3" maxlength="30" autocomplete="username" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="password">Password (8+ characters)</label>
+        <input id="password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+        <label for="confirm">Confirm password</label>
+        <input id="confirm" name="confirm" type="password" minlength="8" autocomplete="new-password" required>
+        <button class="account-btn" type="submit">Create Account</button>
+      </form>
+      <p class="account-switch">Already registered? <a href="{{ url_for('account.login') }}">Log in</a></p>
+    {% elif mode == 'login' %}
+      <form method="post" action="{{ url_for('account.login') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_value }}">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="account-btn" type="submit">Log In</button>
+      </form>
+      <p class="account-switch">New student? <a href="{{ url_for('account.register') }}">Register</a></p>
+    {% else %}
+      <div class="account-actions">
+        <a class="account-btn" href="{{ url_for('lessons') }}">Explore Learning Modules</a>
+        <form method="post" action="{{ url_for('account.logout') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_value }}">
+          <button class="account-btn account-secondary" type="submit">Log Out</button>
+        </form>
+      </div>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}
