@@ -5,6 +5,9 @@
 
 {% block content %}
 
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='lesson-completion-demo.css') }}">
+
 <link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
 
 <div class="learning-page">
@@ -896,5 +899,7 @@ def test_add():
 <!-- RANDOMIZED EIGHT-QUESTION QUIZ -->
 <script src="{{ url_for('static', filename='module-quiz.js') }}"
         defer></script>
+
+<script src="{{ url_for('static', filename='lesson-completion-demo.js') }}"></script>
 
 {% endblock %}

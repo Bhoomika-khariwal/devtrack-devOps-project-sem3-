@@ -1,0 +1,147 @@
+
+/* DevTrack Lesson Completion Prototype */
+
+.learning-page .dtc-overview {
+  background: #17243b;
+  border: 1px solid #2d415d;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0 30px;
+  color: #f1f5f9;
+}
+
+.learning-page .dtc-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.learning-page .dtc-heading-row h2 {
+  color: #2dd4bf;
+  font-size: 23px;
+  margin: 0 0 8px;
+}
+
+.learning-page .dtc-heading-row p {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.learning-page .dtc-demo-tag {
+  padding: 7px 12px;
+  background: #17403e;
+  color: #5eead4;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.learning-page .dtc-numbers {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 24px 0 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.learning-page .dtc-progress-track {
+  width: 100%;
+  height: 12px;
+  background: #334155;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.learning-page .dtc-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    #14b8a6,
+    #2dd4bf
+  );
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.learning-page .dtc-explanation {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.learning-page .dtc-warning {
+  color: #fbbf24;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.learning-page .dtc-action-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 22px;
+}
+
+.learning-page .dtc-complete-button {
+  padding: 11px 18px;
+  background: transparent;
+  border: 1px solid #2dd4bf;
+  border-radius: 9px;
+  color: #2dd4bf;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.learning-page .dtc-complete-button:hover {
+  background: #17403e;
+}
+
+.learning-page .dtc-complete-button.dtc-is-complete {
+  background: #14b8a6;
+  color: #071525;
+}
+
+.learning-page .dtc-complete-button:focus-visible,
+.learning-page .dtc-reset:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.learning-page .dtc-status {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.learning-page .dtc-reset {
+  background: transparent;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 9px 14px;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+.learning-page .dtc-reset:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+@media (max-width: 600px) {
+  .learning-page .dtc-overview {
+    padding: 18px;
+  }
+
+  .learning-page .dtc-complete-button {
+    width: 100%;
+  }
+}
+
