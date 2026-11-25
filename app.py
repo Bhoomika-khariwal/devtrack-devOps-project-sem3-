@@ -229,11 +229,24 @@ def git_github():
 def cicd():
     return render_template("cicd.html")
 
+
+# ==============================
+# STUDENT PROGRESS API
+# ==============================
+
+from progress_api import progress_bp
+
+app.register_blueprint(progress_bp)
+
+# ========================================
+# STUDENT PROGRESS DASHBOARD PAGE
+# ========================================
+
 @app.route("/student-dashboard")
+@login_required
 def student_dashboard():
     return render_template("student_dashboard.html")
 
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) 
