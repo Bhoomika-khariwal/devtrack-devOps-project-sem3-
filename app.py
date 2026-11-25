@@ -35,6 +35,11 @@ def git_github():
 def cicd():
     return render_template("cicd.html")
 
+@app.route("/student-dashboard")
+def student_dashboard():
+    return render_template("student_dashboard.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

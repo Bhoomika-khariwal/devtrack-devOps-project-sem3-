@@ -7,10 +7,21 @@
     <div>
       <h1>Build your DevOps skills, one step at a time.</h1>
       <p>DevTrack turns key concepts into a clear learning path, from DevOps basics to Git, GitHub and CI/CD.</p>
-      <div class="actions">
-        <a class="btn primary" href="{{ url_for('lessons') }}">Explore learning modules</a>
-        <a class="btn ghost" href="#path">See what you will learn</a>
-      </div>
+      
+<div class="actions">
+    <a class="btn primary" href="{{ url_for('lessons') }}">
+        Explore learning modules
+    </a>
+
+    <a class="btn ghost" href="#path">
+        See what you will learn
+    </a>
+
+    <a class="btn primary" href="{{ url_for('student_dashboard') }}">
+        📊 My Progress
+    </a>
+</div>
+
     </div>
 
     <aside class="pipeline" aria-label="Example CI/CD pipeline">
