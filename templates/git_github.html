@@ -3,6 +3,18 @@
 {% block title %}DevTrack | Git and GitHub{% endblock %}
 
 {% block content %}
+
+<!-- DevTrack Shared Lesson Completion Tracker - Git -->
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='lesson-completion-demo.css') }}">
+
+<script
+  src="{{ url_for('static', filename='lesson-completion-shared.js') }}"
+  data-module-id="git"
+  defer>
+</script>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
 
 <div class="learning-page">

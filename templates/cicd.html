@@ -3,6 +3,19 @@
 {% block title %}DevTrack | CI/CD and Automation{% endblock %}
 
 {% block content %}
+
+
+<!-- DevTrack Shared Lesson Completion Tracker - CI/CD -->
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='lesson-completion-demo.css') }}">
+
+<script
+  src="{{ url_for('static', filename='lesson-completion-shared.js') }}"
+  data-module-id="cicd"
+  defer>
+</script>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
 
 <style>

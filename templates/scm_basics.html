@@ -3,6 +3,19 @@
 {% block title %}DevTrack | SCM Fundamentals{% endblock %}
 
 {% block content %}
+
+
+<!-- DevTrack Shared Lesson Completion Tracker - SCM -->
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='lesson-completion-demo.css') }}">
+
+<script
+  src="{{ url_for('static', filename='lesson-completion-shared.js') }}"
+  data-module-id="scm"
+  defer>
+</script>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='lesson-detail.css') }}">
 
 <div class="learning-page">
